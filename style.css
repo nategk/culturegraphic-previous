@@ -1,0 +1,180 @@
+/* DO NOT EDIT -  AUTOMATICALLY GENERATED FROM: style.scss */
+/*
+ * Theme Name: cg
+ * Theme URI: http://culturegraphic.com
+ * Description: Custom theme for culturegraphic.com
+ * Author: Nathaniel Kerksick
+ * Version: 1.0
+ * Tags: grid, adaptive, clean
+ */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+/*
+ * cg COLORS
+ */
+/*
+ * TAGS
+ */
+body {
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  word-spacing: 0;
+  line-height: 1.4em;
+  color: #323232;
+  background: #fafafa; }
+
+a:focus {
+  outline: 1px dotted; }
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #09aeef; }
+
+a:hover {
+  color: #00c8fe; }
+
+hr {
+  border: 0 #c8c8c8 solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  word-spacing: 0;
+  line-height: 1.4em; }
+
+h1 {
+  font-size: 1.4em;
+  font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase; }
+
+h2 {
+  font-size: 1.4em;
+  font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em; }
+
+h3 {
+  font-size: 1.6em; }
+
+h4 {
+  font-size: 1.4em; }
+
+h5 {
+  font-size: 1.2em; }
+
+h6 {
+  font-size: 1em; }
+
+ol {
+  list-style: decimal; }
+
+ul {
+  list-style: disc; }
+
+li {
+  margin-left: 2em; }
+
+address,
+dl,
+fieldset,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+ol,
+p,
+pre,
+table,
+ul {
+  margin-bottom: 2em; }
+
+/*
+ * CUSTOM
+ */
+.container {
+  width: 79.1667em; }
+
+header {
+  width: 12.5em;
+  margin-right: 0.8333em;
+  display: block;
+  position: relative;
+  float: left;
+  text-align: center;
+  background-color: #f0f0f0;
+  height: 9.1667em; }
+  header a {
+    width: 100%;
+    height: 100%;
+    float: left; }
+    header a:hover h1,
+    header a:hover h2 {
+      color: #09aeef; }
+  header h1,
+  header h2 {
+    padding-top: 4.4em;
+    margin: 0;
+    color: black;
+    font-size: 1.2em; }
+    header h1:before,
+    header h2:before {
+      display: block;
+      position: absolute;
+      top: 1em;
+      left: 0;
+      height: 3em;
+      width: 100%;
+      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
+      content: ' ';
+      margin-bottom: 0; }
+  header p {
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.25em;
+    margin: 0;
+    color: #646464; }
+
+.column {
+  float: left;
+  width: $ margin-left: 0.8333em;
+  background-color: #c8c8c8; }
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.footer {
+  margin-left: 13.3333em;
+  width: 65.8333em;
+  background-color: #c8c8c8; }
+

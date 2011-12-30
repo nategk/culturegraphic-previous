@@ -1,0 +1,380 @@
+/*
+Theme Name: cg
+Theme URI: http://culturegraphic.com
+Description: Custom theme for culturegraphic.com
+Author: Nathaniel Kerksick
+Version: 1.0
+Tags: grid, fixed-width, 960.gs, clean
+*/
+
+/*
+	Frameless			<http://framelessgrid.com/>
+	by Joni Korpi 		<http://jonikorpi.com/>
+	licensed under CC0	<http://creativecommons.org/publicdomain/zero/1.0/>
+*/
+
+
+//
+// Configuration
+//
+
+@font-size: 16; 		// Your base font-size in pixels
+@em: @font-size*1em;	// Shorthand for outputting ems, e.g. "12/@em"
+
+@column: 48;	// The column-width of your grid in pixels
+@gutter: 24;	// The gutter-width of your grid in pixels
+
+
+//
+// Column-widths in variables, in ems
+//
+
+ @1cols: ( 1 * (@column + @gutter) - @gutter) / @em; @1col: @1cols;
+ @2cols: ( 2 * (@column + @gutter) - @gutter) / @em;
+ @3cols: ( 3 * (@column + @gutter) - @gutter) / @em;
+ @4cols: ( 4 * (@column + @gutter) - @gutter) / @em;
+ @5cols: ( 5 * (@column + @gutter) - @gutter) / @em;
+ @6cols: ( 6 * (@column + @gutter) - @gutter) / @em;
+ @7cols: ( 7 * (@column + @gutter) - @gutter) / @em;
+ @8cols: ( 8 * (@column + @gutter) - @gutter) / @em;
+ @9cols: ( 9 * (@column + @gutter) - @gutter) / @em;
+@10cols: (10 * (@column + @gutter) - @gutter) / @em;
+@11cols: (11 * (@column + @gutter) - @gutter) / @em;
+@12cols: (12 * (@column + @gutter) - @gutter) / @em;
+@13cols: (13 * (@column + @gutter) - @gutter) / @em;
+@14cols: (14 * (@column + @gutter) - @gutter) / @em;
+@15cols: (15 * (@column + @gutter) - @gutter) / @em;
+@16cols: (16 * (@column + @gutter) - @gutter) / @em;
+
+
+//
+// Column-widths in a function, in ems
+//
+
+.width (@cols:1) {
+	width: (@cols * (@column + @gutter) - @gutter) / @em;
+}
+
+
+/*
+	Margin, padding, and border resets
+	except for form elements
+*/
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+/*
+	Consistency fixes
+	adopted from http://necolas.github.com/normalize.css/
+*/
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, nav, section, audio, canvas, video {
+	display: block;
+}
+
+html {
+	height: 100%; 
+	-webkit-text-size-adjust: 100%; 
+	-ms-text-size-adjust: 100%;
+}
+
+	body {min-height: 100%; font-size: 100%;}
+
+sub, sup {
+	font-size: 75%; 
+	line-height: 0; 
+	position: relative; 
+	vertical-align: baseline;
+}
+
+	sup {top: -0.5em;}
+	sub {bottom: -0.25em;}
+
+pre {
+	white-space: pre; 
+	white-space: pre-wrap; 
+	word-wrap: break-word;
+}
+
+b, strong {font-weight: bold;}
+abbr[title] {border-bottom: 1px dotted;}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a img, img {
+	-ms-interpolation-mode: bicubic;
+	border: 0;
+}
+
+input, textarea, button, select {
+	margin: 0;
+	font-size: 100%;
+	line-height: normal;
+	vertical-align: baseline;
+}
+
+	button,
+	html input[type="button"], 
+	input[type="reset"], 
+	input[type="submit"] {
+	    cursor: pointer;
+	    -webkit-appearance: button;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+			 -o-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+				box-sizing: border-box;
+	}
+
+	textarea {overflow: auto;}
+
+
+/*
+	These are easy to forget
+*/
+
+::selection {
+	background: red;
+	color: white;
+}
+::-moz-selection {
+	background: red;
+	color: white;
+}
+
+img::selection {
+	background: transparent;
+}
+img::-moz-selection {
+	background: transparent;
+}
+
+body {
+	-webkit-tap-highlight-color: rgba(255,0,0, 0.62);
+}
+
+
+/*
+	Style overrides for IE6-8
+	http://jonikorpi.com/leaving-old-IE-behind/
+*/
+
+.ie {
+
+}
+
+
+/*
+	An easy way to zoom your entire layout in or out (as long as it's set in ems).
+	Just change the media queries to activate them.
+	Assuming your base font-size is 16:
+	- the first one zooms out by a factor of (16-2)/16 = 0.875
+	- the second one zooms in by a factor of (16+2)/16 = 1.125  
+*/
+
+@media screen and (max-width: 1px) {
+	body {
+		font-size: (@font-size - 2)/16*1em;
+	}
+}
+
+@media screen and (max-width: 1px) {
+	body {
+		font-size: (@font-size + 2)/16*1em;
+	}
+}
+
+
+/* TAGS */
+
+/*
+
+COLORS
+
+primary blue: rgb(9,174,239)
+electric hilight blue: rgb(0,200,254)
+solid blue: rgb(0,137,238)
+magenta: rgb(226,1,119)
+primary green: rgb(0,168,143)
+bright green: rgb(0,187,100)
+solid green: rgb(0,123,56)
+red: rgb(223,0,0)
+*/
+
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+	line-height: 1.4em;
+	color: #333;
+	background: rgb(250,250,250);
+}
+
+a:focus {
+	outline: 1px dotted
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: rgb(9,174,239);
+}
+a:hover {
+  color: rgb(0,200,254); 
+}
+
+hr {
+	border: 0 #ccc solid;
+	border-top-width: 1px;
+	clear: both;
+	height: 0
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+	line-height: 1.4em
+}
+
+h1 {
+	font-size: 1.4em;
+	font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+h4 {
+	font-size: 1.4em;
+}
+
+h5 {
+	font-size: 1.2em
+}
+
+h6 {
+	font-size: 1em;
+}
+
+ol {
+	list-style: decimal
+}
+
+ul {
+	list-style: disc
+}
+
+li {
+	margin-left: 30px
+}
+
+p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
+	margin-bottom: 20px
+}
+
+
+
+/* CUSTOM */
+
+
+#logo {
+  display: block;
+  position: relative;
+  color: rgb(0,0,0);
+  text-align: center;
+  padding: 7em 1em 1em 1em;
+  background-color: rgb(240,240,240);
+  width: 14em;
+}
+a#logo:hover {
+  color: rgb(9,174,239);
+}
+#logo:before {
+  display: block;
+  position: absolute;
+  top: 2em;
+  left: 0;
+  height: 4em;
+  width: 100%;
+  background: url('../img/culturegraphic-logomark.svg') no-repeat center center;
+  content: ' ';
+  margin-bottom: 0;
+}
+#logo h1, #logo h2 {
+  margin: 0;
+}
+#logo p {
+  display: block;
+  text-transform: uppercase;
+  font-size: .85em;
+  letter-spacing: .25em;
+  margin: .25em 0 .5em 0;
+}
+
+
+
+/*
+	Style overrides for IE6-8
+	http://jonikorpi.com/leaving-old-IE-behind/
+*/
+
+.ie {
+
+}
+
+
+/*
+	An easy way to zoom your entire layout in or out (as long as it's set in ems).
+	Just change the media queries to activate them.
+	Assuming your base font-size is 16:
+	- the first one zooms out by a factor of (16-2)/16 = 0.875
+	- the second one zooms in by a factor of (16+2)/16 = 1.125  
+*/
+
+@media screen and (max-width: 1px) {
+	body {
+		font-size: ($font-size - 2) / $em;
+	}
+}
+
+@media screen and (max-width: 1px) {
+	body {
+		font-size: ($font-size + 2) / $em;
+	}
+}

@@ -1,0 +1,241 @@
+/*
+Theme Name: cg
+Theme URI: http://culturegraphic.com
+Description: Custom theme for culturegraphic.com
+Author: Nathaniel Kerksick
+Version: 1.0
+Tags: grid, adaptive, clean
+*/
+
+
+
+
+//
+// GRID & SCALE
+//
+
+$font-size: 12px; 		// Your base font-size in pixels
+$em: $font-size / 1em;	// Shorthand for outputting ems
+
+$column: 30px;	// The column-width of your grid in pixels
+$gutter: 10px;	// The gutter-width of your grid in pixels
+
+
+//
+// Column-widths in variables, in ems
+//
+
+ $1col: ( 1 * ($column + $gutter) - $gutter) / $em;
+ $2cols: ( 2 * ($column + $gutter) - $gutter) / $em;
+ $3cols: ( 3 * ($column + $gutter) - $gutter) / $em;
+ $4cols: ( 4 * ($column + $gutter) - $gutter) / $em;
+ $5cols: ( 5 * ($column + $gutter) - $gutter) / $em;
+ $6cols: ( 6 * ($column + $gutter) - $gutter) / $em;
+ $7cols: ( 7 * ($column + $gutter) - $gutter) / $em;
+ $8cols: ( 8 * ($column + $gutter) - $gutter) / $em;
+ $9cols: ( 9 * ($column + $gutter) - $gutter) / $em;
+$10cols: (10 * ($column + $gutter) - $gutter) / $em;
+$11cols: (11 * ($column + $gutter) - $gutter) / $em;
+$12cols: (12 * ($column + $gutter) - $gutter) / $em;
+$13cols: (13 * ($column + $gutter) - $gutter) / $em;
+$14cols: (14 * ($column + $gutter) - $gutter) / $em;
+$15cols: (15 * ($column + $gutter) - $gutter) / $em;
+$16cols: (16 * ($column + $gutter) - $gutter) / $em;
+$17cols: (17 * ($column + $gutter) - $gutter) / $em;
+$18cols: (18 * ($column + $gutter) - $gutter) / $em;
+$19cols: (19 * ($column + $gutter) - $gutter) / $em;
+$20cols: (20 * ($column + $gutter) - $gutter) / $em;
+$21cols: (21 * ($column + $gutter) - $gutter) / $em;
+$22cols: (22 * ($column + $gutter) - $gutter) / $em;
+$23cols: (23 * ($column + $gutter) - $gutter) / $em;
+$24cols: (24 * ($column + $gutter) - $gutter) / $em;
+
+$gutter: $gutter / $em;
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+//
+// Column-widths in a function, in ems
+//
+
+@mixin width ($cols:1) {
+	width: ($cols * ($column + $gutter) - $gutter) / $em;
+	margin-right: $gutter / $em;
+}
+
+
+/*
+cg COLORS
+*/
+
+$blue: rgba(9,174,239,1);
+$light_blue: rgba(0,200,254,1);
+$dark_blue: rgba(0,137,238,1);
+$magenta: rgba(226,1,119,1);
+$green: rgba(0,168,143,1);
+$light_green: rgba(0,187,100,1);
+$dark_green: rgba(0,123,56,1);
+$red: rgba(223,0,0,1);
+$black: rgba(0,0,0,1);
+$dark_gray: rgba(50,50,50,1);
+$gray: rgba(100,100,100,1);
+$light_gray: rgba(200,200,200,1);
+$gray_ultralight: rgba(240,240,240,1);
+$off_white: rgba(250,250,250,1);
+
+
+
+
+/* TAGS */
+
+body {
+  margin: 0 auto;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+	line-height: 1.4em;
+	color: $dark_gray;
+	background: $off_white;
+}
+a:focus {
+	outline: 1px dotted
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: $blue;
+}
+a:hover {
+  color: $light_blue; 
+}
+hr {
+	border: 0 $light_gray solid;
+	border-top-width: 1px;
+	clear: both;
+	height: 0
+}
+h1,h2,h3,h4,h5,h6 {
+	font-style: normal;
+	font-weight: 400;
+	text-shadow: none;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+	line-height: 1.4em
+}
+h1 {
+	font-size: 1.4em;
+}
+h2 {
+	font-size: 1.4em;
+}
+h3 {
+	font-size: 1.6em;
+}
+h4 {
+	font-size: 1.4em;
+}
+h5 {
+	font-size: 1.2em;
+}
+h6 {
+	font-size: 1em;
+}
+ol {
+	list-style: decimal
+}
+ul {
+	list-style: disc
+}
+li {
+	margin-left: 2em;
+}
+p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
+	margin-bottom: 2em;
+}
+
+
+/* CUSTOM */
+
+.container {
+  width: $24cols;
+}
+
+header {
+  width: $4cols;
+  margin-right: $gutter;
+  display: block;
+  position: relative;
+  float: left;
+  text-align: center;
+  background-color: $gray_ultralight;
+  height: $3cols;
+  a {
+    width: 100%;
+    height: 100%;
+    float: left;
+    &:hover h1, &:hover h2 {
+      color: $blue;
+    }
+  }
+  h1, h2 {
+    font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-top: 4.6em;
+    margin: 0;
+    color: $black;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    &:before {
+      display: block;
+      position: absolute;
+      top: 1em;
+      left: 0;
+      height: 3em;
+      width: 100%;
+      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
+      content: ' ';
+      margin-bottom: 0;
+    }
+  }
+  p {
+    text-transform: uppercase;
+    font-size: .75em;
+    letter-spacing: .25em;
+    margin: 0;
+    color: $gray;
+  }
+}
+
+.column {
+  float: left;
+  width: $10cols;
+  margin-right: $gutter;
+  background-color: $ultralight_gray;
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0:
+  width: $24cols;
+}
+
+.footer {
+  margin-left: $4cols + $gutter;
+  width: $20cols + $gutter;
+  background-color: $ultralight_gray;
+}
