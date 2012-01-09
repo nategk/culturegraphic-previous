@@ -14,16 +14,75 @@ function generate_css() {
 add_action( 'after_setup_theme', 'generate_css' );
 
 
-// Max content width to fit in blog 
-// $GLOBALS['content_width'] = 640;
+// Post thumbs
+add_theme_support( 'post-thumbnails' );
+// Add front page size
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'small', 365, 0, false );
+}
+
+// Remove auto p
+remove_filter( 'the_content', 'wpautop' );
 
 
-if ( function_exists( 'add_image_size' ) ) { 
-  /*
-	add_image_size( 'full', 200, 40, false ); //250 pixels wide (and 40 height)
-	add_image_size( 'school-emblems', 120, 60, false ); //250 pixels wide (and 40 height)
-	add_image_size( 'homepage-slideshow', 745, 274, true ); //(cropped)
-  */
+// Remove auto p
+
+
+
+function showTweets($username, $items = 1){
+	include_once(ABSPATH . WPINC . '/feed.php');
+	// Get a SimplePie feed object from the specified feed source.
+	$rss = fetch_feed("http://search.twitter.com/search.atom?q=from:" . $username . "&rpp=" . $items);
+	if (!is_wp_error( $rss ) ) : // Checks that the object is created correctly 
+		// Figure out how many total items there are, but limit it to 5. 
+		$maxitems = $rss->get_item_quantity($items); 
+		// Build an array of all the items, starting with element 0 (first element).
+		$rss_items = $rss->get_items(0, $maxitems); 
+	endif;
+	if ($maxitems == 0)
+		echo '<!-- No Tweets found -->';
+	else
+	?>
+		<ul>
+			<?php
+			// Loop through each feed item and display each item as a hyperlink.
+			foreach ( $rss_items as $item ) : ?>
+				<li>
+					<?php echo $item->get_description(); ?>
+					<br />
+					<a href='<?php echo ($items < 3 ? esc_url("http://twitter.com/#!/" . $username) : esc_url( $item->get_permalink() )); ?>'>
+						<?php echo human_time_diff( $item->get_date('U'), current_time('timestamp') ) . ' ago'; ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+<?php
+}
+
+function showPins($username, $items = 3){
+	include_once(ABSPATH . WPINC . '/feed.php');
+	// Get a SimplePie feed object from the specified feed source.
+	$rss = fetch_feed("http://pinterest.com/" . $username . "/feed.rss");
+	if (!is_wp_error( $rss ) ) : // Checks that the object is created correctly 
+		// Figure out how many total items there are, but limit it to 5. 
+		$maxitems = $rss->get_item_quantity($items); 
+		// Build an array of all the items, starting with element 0 (first element).
+		$rss_items = $rss->get_items(0, $maxitems); 
+	endif;
+	if ($maxitems == 0)
+		echo '<!-- No Pins found -->';
+	else
+	?>
+		<ul>
+			<?php
+			// Loop through each feed item and display each item as a hyperlink.
+			foreach ( $rss_items as $item ) : ?>
+				<li>
+					<?php echo $item->get_description(); ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+<?php
 }
 
 
@@ -58,7 +117,7 @@ function create_post_type() {
       ),
       'public' => true,
       'has_archive' => false,
-      'rewrite' => array('slug' => 'projects'),
+      'rewrite' => array('slug' => 'project', 'with_front' => false),
       'hierarchical' => false,
       'supports' => array('title','editor','author','thumbnail'),
       'taxonomies' => array('client','process')
@@ -92,6 +151,15 @@ function create_taxonomies() {
     ),
     'rewrite' => false
   )); 
+}
+
+
+// Add projects to loop
+add_filter( 'pre_get_posts', 'my_get_posts' );
+function my_get_posts( $query ) {
+	if ( is_home() )
+		$query->set( 'post_type', array( 'project' ) );
+	return $query;
 }
 
 

@@ -7,23 +7,19 @@
  * Version: 1.0
  * Tags: grid, adaptive, clean
  */
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0; }
-
 /*
  * cg COLORS
+ */
+/*
+ * cg FONT STACKS
  */
 /*
  * TAGS
  */
 body {
-  margin: 0 auto;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: 0;
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
@@ -32,7 +28,7 @@ body {
   text-transform: none;
   letter-spacing: 0;
   word-spacing: 0;
-  line-height: 1.4em;
+  line-height: 1.6em;
   color: #323232;
   background: #fafafa; }
 
@@ -69,15 +65,10 @@ h6 {
   line-height: 1.4em; }
 
 h1 {
-  font-size: 1.4em;
-  font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-transform: uppercase; }
+  font-size: 1.4em; }
 
 h2 {
-  font-size: 1.4em;
-  font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.15em; }
+  font-size: 1.2em; }
 
 h3 {
   font-size: 1.6em; }
@@ -117,64 +108,326 @@ table,
 ul {
   margin-bottom: 2em; }
 
+img {
+  max-width: 100%;
+  height: auto; }
+
+/*
+ * COMMON TYPE
+ */
+.small-title {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.2em; }
+
+.big-title {
+  font-family: 'Georgia', serif;
+  font-size: 3em;
+  font-style: italic;
+  line-height: 1.1em; }
+
+.label {
+  padding: 0.25em 0.5em;
+  background: #ffe800;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  display: block;
+  float: left;
+  color: #323232;
+  letter-spacing: 0.2em;
+  margin-left: -0.5em;
+  line-height: 1em;
+  min-width: 5.4167em; }
+
+/*
+ * GRID CONTAINER
+ */
+.admin-bar .container_15 {
+  padding-top: 28px; }
+
+.container_15 {
+  width: 83.3333em;
+  position: relative;
+  display: block;
+  margin: 0 auto; }
+
+/*
+ * COMMON LAYOUT
+ */
+.content {
+  float: left;
+  display: block;
+  position: relative;
+  width: 65em;
+  margin-right: 0em;
+  font-size: 1em;
+  margin-left: 18.3333em;
+  margin-top: 3.3333em;
+  margin-bottom: 8.75em; }
+
+.half,
+.size-medium {
+  float: left;
+  display: block;
+  position: relative;
+  width: 30.4167em;
+  margin-right: 2.0833em;
+  font-size: 1em;
+  margin-bottom: 2.0833em; }
+  .half:nth-child(even),
+  .size-medium:nth-child(even) {
+    margin-right: 0; }
+  .half img,
+  .size-medium img {
+    border: 0; }
+
+.size-small,
+.third {
+  float: left;
+  display: block;
+  position: relative;
+  width: 19.5833em;
+  margin-right: 2.0833em;
+  font-size: 1em; }
+  .size-small:nth-child(3n),
+  .third:nth-child(3n) {
+    margin-right: 0; }
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
 /*
  * CUSTOM
  */
-.container {
-  width: 79.1667em; }
-
 header {
   width: 12.5em;
-  margin-right: 0.8333em;
+  position: fixed;
   display: block;
-  position: relative;
-  float: left;
+  margin-left: 2.0833em;
   text-align: center;
-  background-color: #f0f0f0;
-  height: 9.1667em; }
-  header a {
+  top: auto;
+  left: auto; }
+  header .logo {
     width: 100%;
-    height: 100%;
-    float: left; }
-    header a:hover h1,
-    header a:hover h2 {
-      color: #09aeef; }
-  header h1,
-  header h2 {
-    padding-top: 4.4em;
-    margin: 0;
-    color: black;
-    font-size: 1.2em; }
-    header h1:before,
-    header h2:before {
-      display: block;
-      position: absolute;
-      top: 1em;
-      left: 0;
-      height: 3em;
+    height: 8.75em;
+    float: left;
+    background-color: #f0f0f0; }
+    header .logo a {
       width: 100%;
-      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
-      content: ' ';
-      margin-bottom: 0; }
-  header p {
+      height: 100%; }
+      header .logo a:hover h1,
+      header .logo a:hover h2 {
+        color: #09aeef; }
+    header .logo h1,
+    header .logo h2 {
+      font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding-top: 6em;
+      margin: 0;
+      color: black;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 0.2em; }
+      header .logo h1:before,
+      header .logo h2:before {
+        display: block;
+        position: absolute;
+        top: 1.5em;
+        left: 0;
+        height: 3.5em;
+        width: 100%;
+        background: url('img/culturegraphic-logomark.svg') no-repeat center center;
+        content: ' ';
+        margin-bottom: 0; }
+    header .logo span {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      font-size: 0.8em;
+      color: #646464; }
+  header ul.nav {
+    list-style: none;
+    padding: 0;
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 2.0833em 0; }
+    header ul.nav li {
+      margin: 0; }
+      header ul.nav li a {
+        display: block;
+        float: left;
+        padding: 0.5em 0;
+        width: 100%;
+        border-bottom: 0.2em solid #f0f0f0; }
+      header ul.nav li.active a {
+        color: black; }
+
+/*
+ * HOME
+ */
+.home .half {
+  height: 19.5833em; }
+
+.home .intro {
+  height: 14.1667em;
+  padding-top: 3.3333em; }
+  .home .intro h2 {
+    position: absolute;
+    top: -3.3333em;
+    left: 0; }
+  .home .intro h3 {
+    margin: 0; }
+  .home .intro:after {
+    display: block;
+    position: absolute;
+    width: 96%;
+    bottom: 0;
+    height: 8em;
+    background: url('img/culturegraphic-process.svg') no-repeat center center;
+    content: ' '; }
+
+.home .project {
+  position: relative; }
+  .home .project h3 {
+    font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
-    font-size: 0.75em;
-    letter-spacing: 0.25em;
-    margin: 0;
-    color: #646464; }
+    letter-spacing: 0.2em;
+    position: absolute;
+    top: 24.1667em;
+    left: 0; }
 
-.column {
-  float: left;
-  width: $ margin-left: 0.8333em;
-  background-color: #c8c8c8; }
+/*
+ * SINGLE
+ */
+  .single .project p {
+    font-family: 'Georgia', serif;
+    line-height: 1.6em;
+    font-size: 1.2em; }
+  .single .project .meta {
+    background: #646464;
+    margin: 1em 0; }
 
-.grid {
-  position: absolute;
-  top: 0;
-  left: 0; }
+  .single .project .size-small {
+    float: left;
+    display: block;
+    position: relative;
+    width: 19.5833em;
+    margin-right: 2.0833em;
+    font-size: 1em;
+    margin-bottom: 2.0833em; }
+  .single .project .size-medium {
+    float: left;
+    display: block;
+    position: relative;
+    width: 30.4167em;
+    margin-right: 2.0833em;
+    font-size: 1em;
+    margin-bottom: 2.0833em; }
+  .single .project .size-large {
+    float: left;
+    display: block;
+    position: relative;
+    width: 62.9167em;
+    margin-right: 2.0833em;
+    font-size: 1em;
+    margin-bottom: 2.0833em; }
 
 .footer {
-  margin-left: 13.3333em;
-  width: 65.8333em;
-  background-color: #c8c8c8; }
+  float: left;
+  display: block;
+  position: relative;
+  width: 62.9167em;
+  margin-right: 2.0833em;
+  font-size: 1em;
+  margin-left: 18.3333em;
+  background: #f0f0f0; }
+  .footer h2 {
+    padding: 0.25em 0.5em;
+    background: #ffe800;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    display: block;
+    float: left;
+    color: #323232;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.1em; }
+  .footer .bio {
+    float: left;
+    display: block;
+    position: relative;
+    width: 30.4167em;
+    margin-right: 2.0833em;
+    font-size: 1em; }
+    .footer .bio .pic {
+      float: left;
+      display: block;
+      position: relative;
+      width: 8.75em;
+      margin-right: 2.0833em;
+      font-size: 1em;
+      margin-bottom: 0.5em;
+      margin-top: 0.5em; }
+      .footer .bio .pic img {
+        width: 100%;
+        height: auto; }
+  .footer .bio-meta {
+    float: left;
+    display: block;
+    position: relative;
+    width: 30.4167em;
+    margin-right: 2.0833em;
+    font-size: 1em;
+    margin-right: 0; }
+      .footer .bio-meta .pinterest ul {
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+        .footer .bio-meta .pinterest ul li {
+          float: left;
+          display: block;
+          position: relative;
+          width: 8.75em;
+          margin-right: 2.0833em;
+          font-size: 1em;
+          margin: 0; }
+          .footer .bio-meta .pinterest ul li p {
+            margin: 0;
+            font-size: 0;
+            line-height: 0;
+            text-indent: -9999em;
+            overflow: hidden; }
+            .footer .bio-meta .pinterest ul li p img {
+              text-indent: 9999em;
+              max-height: 8.75em;
+              width: auto; }
+
+
+.show_grid {
+  display: block;
+  width: 81.25em;
+  padding-left: 2.0833em;
+  position: fixed;
+  top: 0;
+  margin: auto 0;
+  overflow: visible;
+  background: rgba(0,200,254,0.10);
+  height: 100%; }
+  .show_grid .column {
+    float: left;
+    display: block;
+    position: relative;
+    width: 3.3333em;
+    margin-right: 2.0833em;
+    font-size: 1em;
+    height: 100%;
+    background: rgba(0,200,254,0.10);
+    padding-top: 2em;
+    text-align: center;
+    color: #00c8fe; }
 

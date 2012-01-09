@@ -43,17 +43,50 @@
   	 */
   	wp_enqueue_script("jquery");
   	wp_head();
+  	flush_rewrite_rules();
   ?>
   <script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/js/dom.js"></script>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 </head>
-<body <?php body_class('container'); ?> <?php language_attributes(); ?>>
+<body <?php body_class('container_15'); ?> <?php language_attributes(); ?>>
 
-<div class="wrapper">
+  <header>
 
-  <header id="logo">
-    <a href="<?php bloginfo( 'url' ); ?>">
-      <h2>culturegraphic</h2>
-      <p class="subtitle">interactive design</p>
-    </a>
+		<?php if (is_home()) { ?>
+	    <div class="logo">
+	      <h1><?php bloginfo( 'name' ); ?> <span class="small-title"><?php bloginfo( 'description' ); ?></span></h1>
+	    </div><!-- .logo -->
+    <?php } else { ?>
+    	<div class="logo">
+		    <a href="<?php bloginfo('url'); ?>">
+		      <h2><?php bloginfo( 'name' ); ?> <span class="small-title"><?php bloginfo( 'description' ); ?></span></h2>
+		    </a><!-- a -->
+	    </div><!-- .logo -->
+    <?php
+    }
+    ?>
+    
+		<?php
+		if ( is_single() ) {
+			$project_title = get_the_title();
+			$args = array(
+				'post_type' => 'project',
+				'orderby' => 'date',
+				'order'  => 'ASC'
+			);
+			$projects = new WP_Query( $args );
+			if ($projects->have_posts()) {
+			?>
+				<ul class="nav" role="navigation">
+				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
+					<li class="small-title<?php if ($project_title == get_the_title()) echo " active"; ?>"><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
+				<?php
+				endwhile;
+				?>
+				</ul>
+				<?php
+			}
+		}
+		?>
+    
   </header>

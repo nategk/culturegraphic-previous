@@ -17,57 +17,60 @@ Tags: grid, adaptive, clean
 $font-size: 12px; 		// Your base font-size in pixels
 $em: $font-size / 1em;	// Shorthand for outputting ems
 
-$column: 30px;	// The column-width of your grid in pixels
-$gutter: 10px;	// The gutter-width of your grid in pixels
+$column: 40px;	// The column-width of your grid in pixels
+$gutter: 25px;	// The gutter-width of your grid in pixels
+
+$column: $column / $em; // in ems
+$gutter: $gutter / $em; // in ems
 
 
 //
 // Column-widths in variables, in ems
 //
 
- $1col: ( 1 * ($column + $gutter) - $gutter) / $em;
- $2cols: ( 2 * ($column + $gutter) - $gutter) / $em;
- $3cols: ( 3 * ($column + $gutter) - $gutter) / $em;
- $4cols: ( 4 * ($column + $gutter) - $gutter) / $em;
- $5cols: ( 5 * ($column + $gutter) - $gutter) / $em;
- $6cols: ( 6 * ($column + $gutter) - $gutter) / $em;
- $7cols: ( 7 * ($column + $gutter) - $gutter) / $em;
- $8cols: ( 8 * ($column + $gutter) - $gutter) / $em;
- $9cols: ( 9 * ($column + $gutter) - $gutter) / $em;
-$10cols: (10 * ($column + $gutter) - $gutter) / $em;
-$11cols: (11 * ($column + $gutter) - $gutter) / $em;
-$12cols: (12 * ($column + $gutter) - $gutter) / $em;
-$13cols: (13 * ($column + $gutter) - $gutter) / $em;
-$14cols: (14 * ($column + $gutter) - $gutter) / $em;
-$15cols: (15 * ($column + $gutter) - $gutter) / $em;
-$16cols: (16 * ($column + $gutter) - $gutter) / $em;
-$17cols: (17 * ($column + $gutter) - $gutter) / $em;
-$18cols: (18 * ($column + $gutter) - $gutter) / $em;
-$19cols: (19 * ($column + $gutter) - $gutter) / $em;
-$20cols: (20 * ($column + $gutter) - $gutter) / $em;
-$21cols: (21 * ($column + $gutter) - $gutter) / $em;
-$22cols: (22 * ($column + $gutter) - $gutter) / $em;
-$23cols: (23 * ($column + $gutter) - $gutter) / $em;
-$24cols: (24 * ($column + $gutter) - $gutter) / $em;
-
-$gutter: $gutter / $em;
-
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
+ $1col: ( 1 * ($column + $gutter) - $gutter);
+ $2cols: ( 2 * ($column + $gutter) - $gutter);
+ $3cols: ( 3 * ($column + $gutter) - $gutter);
+ $4cols: ( 4 * ($column + $gutter) - $gutter);
+ $5cols: ( 5 * ($column + $gutter) - $gutter);
+ $6cols: ( 6 * ($column + $gutter) - $gutter);
+ $7cols: ( 7 * ($column + $gutter) - $gutter);
+ $8cols: ( 8 * ($column + $gutter) - $gutter);
+ $9cols: ( 9 * ($column + $gutter) - $gutter);
+$10cols: (10 * ($column + $gutter) - $gutter);
+$11cols: (11 * ($column + $gutter) - $gutter);
+$12cols: (12 * ($column + $gutter) - $gutter);
+$13cols: (13 * ($column + $gutter) - $gutter);
+$14cols: (14 * ($column + $gutter) - $gutter);
+$15cols: (15 * ($column + $gutter) - $gutter);
+$16cols: (16 * ($column + $gutter) - $gutter);
+$17cols: (17 * ($column + $gutter) - $gutter);
+$18cols: (18 * ($column + $gutter) - $gutter);
+$19cols: (19 * ($column + $gutter) - $gutter);
+$20cols: (20 * ($column + $gutter) - $gutter);
+$21cols: (21 * ($column + $gutter) - $gutter);
+$22cols: (22 * ($column + $gutter) - $gutter);
+$23cols: (23 * ($column + $gutter) - $gutter);
+$24cols: (24 * ($column + $gutter) - $gutter);
+$25cols: (25 * ($column + $gutter) - $gutter);
 
 //
 // Column-widths in a function, in ems
 //
 
-@mixin width ($cols:1) {
-	width: ($cols * ($column + $gutter) - $gutter) / $em;
-	margin-right: $gutter / $em;
+@mixin width ($cols:1, $add_gutter:0) {
+	float: left;
+  display: block;
+  position: relative;
+	width: ($cols * ($column + $gutter) - $gutter + $add_gutter);
+	margin-right: $gutter - $add_gutter;
+	font-size: 1em;
+}
+@mixin prefix ($cols:1, $add_gutter:0) {
+	margin-left: ($cols * ($column + $gutter)) + $add_gutter;
+}
+@mixin suffix ($cols:1) {
+	margin-right: ($cols * ($column + $gutter)) + $gutter;
 }
 
 
@@ -87,17 +90,33 @@ $black: rgba(0,0,0,1);
 $dark_gray: rgba(50,50,50,1);
 $gray: rgba(100,100,100,1);
 $light_gray: rgba(200,200,200,1);
-$gray_ultralight: rgba(240,240,240,1);
+$ultralight_gray: rgba(240,240,240,1);
+$ultramostlight_gray: rgba(240,240,240,0.3);
 $off_white: rgba(250,250,250,1);
+$yellow: rgba(255,232,0,1);
 
-
+/*
+cg FONT STACKS
+*/
+@mixin helvetica-font {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin oswald-font {
+	font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+@mixin georgia-font {
+	font-family: 'Georgia', serif;
+}
 
 
 /* TAGS */
 
 body {
+	@include helvetica-font;
   margin: 0 auto;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: normal;
@@ -106,7 +125,7 @@ body {
 	text-transform: none;
 	letter-spacing: 0;
 	word-spacing: 0;
-	line-height: 1.4em;
+	line-height: 1.6em;
 	color: $dark_gray;
 	background: $off_white;
 }
@@ -140,7 +159,7 @@ h1 {
 	font-size: 1.4em;
 }
 h2 {
-	font-size: 1.4em;
+	font-size: 1.2em;
 }
 h3 {
 	font-size: 1.6em;
@@ -166,76 +185,303 @@ li {
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
 	margin-bottom: 2em;
 }
+img {
+	max-width: 100%;
+	height: auto;
+}
 
+/* COMMON TYPE */
+
+.small-title {
+	text-transform: uppercase;
+	font-size: .75em;
+	letter-spacing: .2em;
+}
+
+.big-title {
+	@include georgia-font;
+	font-size: 3em;
+	font-style: italic;
+	line-height: 1.1em;
+}
+
+.label {
+	padding: .25em .5em;
+	background: $yellow;
+	font-size: .75em;
+	text-transform: uppercase;
+	display: block;
+	float: left;
+	color: $dark_gray;
+	letter-spacing: .2em;
+	margin-left: -.5em;
+	line-height: 1em;
+	min-width: $column + $gutter;
+}
+
+/* GRID CONTAINER */
+
+.admin-bar .container_15 {
+	padding-top: 28px;
+}
+
+.container_15 {
+  width: $15cols + ($gutter * 2);
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+/* COMMON LAYOUT */
+
+.content {
+	@include width(12, $gutter);
+	@include prefix(3, $gutter);
+	margin-top: $1col;
+	margin-bottom: $2cols;
+}
+
+.half, .size-medium {
+	@include width(6);
+	margin-bottom: $gutter;
+	&:nth-child(even) {
+		margin-right: 0;
+	}
+	img {
+		border: 0;	
+	}
+}
+
+.third, .size-small {
+	@include width(4);
+	&:nth-child(3n) {
+		margin-right: 0;
+	}
+}
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
 
 /* CUSTOM */
 
-.container {
-  width: $24cols;
-}
-
 header {
-  width: $4cols;
-  margin-right: $gutter;
+  width: (2 * ($column + $gutter)) + ($column * .5);
+  position: fixed;
   display: block;
-  position: relative;
-  float: left;
+  margin-left: $gutter;
   text-align: center;
-  background-color: $gray_ultralight;
-  height: $3cols;
-  a {
+  top: auto;
+  left: auto;
+  .logo {
     width: 100%;
-    height: 100%;
+    height: $2cols;
     float: left;
-    &:hover h1, &:hover h2 {
-      color: $blue;
+    a {
+    	width: 100%;
+    	height: 100%;
+    	&:hover h1, &:hover h2 {
+      	color: $blue;
+    	}
     }
+	  background-color: $ultralight_gray;
+	  h1, h2 {
+	    @include oswald-font;
+	    padding-top: 6em;
+	    margin: 0;
+	    color: $black;
+	    font-size: .9em;
+	    text-transform: uppercase;
+	    letter-spacing: .2em;
+	    &:before {
+	      display: block;
+	      position: absolute;
+	      top: 1.5em;
+	      left: 0;
+	      height: 3.5em;
+	      width: 100%;
+	      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
+	      content: ' ';
+	      margin-bottom: 0;
+	    }
+	  }
+	  span {
+	  	@include helvetica-font;
+	    margin: 0;
+	    font-size: .8em;
+	    color: $gray;
+	  }
   }
-  h1, h2 {
-    font-family: 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding-top: 4.6em;
-    margin: 0;
-    color: $black;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    letter-spacing: .15em;
-    &:before {
-      display: block;
-      position: absolute;
-      top: 1em;
-      left: 0;
-      height: 3em;
-      width: 100%;
-      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
-      content: ' ';
-      margin-bottom: 0;
-    }
-  }
-  p {
-    text-transform: uppercase;
-    font-size: .75em;
-    letter-spacing: .25em;
-    margin: 0;
-    color: $gray;
-  }
+	ul.nav {
+		list-style: none;
+		padding: 0;
+		display: block;
+		float: left;
+		width: 100%;
+		margin: $gutter 0;
+		li {
+			margin: 0;
+			a {
+				display: block;
+				float: left;
+				padding: .5em 0;
+				width: 100%;
+				border-bottom: .2em solid $ultralight_gray;
+			}
+			&.active a {
+				color: $black;
+			}
+		}
+	}
 }
 
-.column {
-  float: left;
-  width: $10cols;
-  margin-right: $gutter;
-  background-color: $ultralight_gray;
+
+
+/* HOME */
+
+.home .half {
+	height: $4cols;
 }
 
-.grid {
-  position: absolute;
-  top: 0;
-  left: 0:
-  width: $24cols;
+.home .intro {
+	height: $3cols;
+	padding-top: $1col;
+	h2 {
+		position: absolute;
+		top: -$1col;
+		left: 0;
+	}
+	h3 {
+		margin: 0;
+	}
+	&:after {
+    display: block;
+    position: absolute;
+		width: 96%;
+		bottom: 0;
+		height: 8em;
+		background: url('img/culturegraphic-process.svg') no-repeat center center;
+    content: ' ';
+	}
+}
+
+.home .project {
+	position: relative;
+	h3 {
+		@include oswald-font;
+		position: absolute;
+		top: $4cols + ($gutter * 2.2);
+		left: 0;
+	}
+}
+
+/* SINGLE */
+
+.single .project {
+	p {
+		@include georgia-font;
+		line-height: 1.6em;
+		font-size: 1.2em;
+	}
+	.meta {
+		width(12);
+		background: $gray;
+		margin: 1em 0;
+	}
+	.size-small {
+		@include width(4);
+		margin-bottom: $gutter;
+	}
+	.size-medium {
+		@include width(6);
+		margin-bottom: $gutter;
+	}
+	.size-large {
+		@include width(12);
+		margin-bottom: $gutter;
+	}
 }
 
 .footer {
-  margin-left: $4cols + $gutter;
-  width: $20cols + $gutter;
-  background-color: $ultralight_gray;
+	@include width(12);
+	margin-left: $3cols + (2 * $gutter);
+	background: $ultralight_gray;
+  h2 {
+		padding: .25em .5em;
+		background: $yellow;
+		font-size: .75em;
+		text-transform: uppercase;
+		display: block;
+		float: left;
+		color: $dark_gray;
+		letter-spacing: .2em;
+  	margin-bottom: .1em;
+  }
+  .bio {
+  	@include width(6);
+		.pic {
+			@include width(2);
+			margin-bottom: .5em;
+			margin-top: .5em;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	.bio-meta {
+		@include width(6);
+		margin-right: 0;
+		.pinterest {
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					@include width(2);
+					margin: 0;
+					p {
+						margin: 0;
+						font-size: 0;
+						line-height: 0;
+						text-indent: -9999em;
+						overflow: hidden;
+						img {
+							text-indent: 9999em;
+							max-height: $2cols;
+							width: auto;
+						}
+					}
+				}
+			}
+		}
+		.contact {
+		}
+	}
+}
+
+// For js function to show grid on shift press
+.show_grid {
+	display: block;
+  width: $15cols + $gutter;
+  padding-left: $gutter;
+  position: fixed;
+  top: 0;
+  margin: auto 0;
+  overflow: visible;
+  background: rgba(0,200,254,0.1);
+  height: 100%;
+	.column {
+		@include width(1);
+		height: 100%;
+		background: rgba(0,200,254,0.1);
+		padding-top: 2em;
+		text-align: center;
+		color: rgba(0,200,254,1);
+	}
 }

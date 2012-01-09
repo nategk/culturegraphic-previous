@@ -2,6 +2,24 @@ jQuery(document).ready(function($) {
     // Code that uses jQuery's $ can follow here.
 
 
+	if ($('.container_15').length) {
+		var COLUMNS = 15;
+		$(document).keydown(function(e) {		
+			if (e.shiftKey) {
+				$('.container_15').append('<div class="show_grid" />');
+				for (i=0;i<COLUMNS;i++) {
+  				$('.show_grid').append('<div class="column">'+(i+1)+'</div>');
+ 				}
+			}
+		});
+		$(document).keyup(function(event){
+			if ($('.show_grid').length) {
+				$('.show_grid').remove();
+			}
+		});
+	}
+
+
     // jQuery SmoothScroll | Version 10-04-30
     $('a[href*=#]').click(function() {
 
