@@ -1,22 +1,54 @@
 jQuery(document).ready(function($) {
-    // Code that uses jQuery's $ can follow here.
-
+  // Code that uses jQuery's $ can follow here.
+  
+	$('.home .content .half').imagesLoaded( function(){
+	  $('.home .content').masonry({
+	    itemSelector : '.half'
+	  }).masonry('reload');;
+	});
 
 	if ($('.container_15').length) {
 		var COLUMNS = 15;
-		$(document).keydown(function(e) {		
-			if (e.shiftKey) {
-				$('.container_15').append('<div class="show_grid" />');
-				for (i=0;i<COLUMNS;i++) {
-  				$('.show_grid').append('<div class="column">'+(i+1)+'</div>');
- 				}
-			}
-		});
-		$(document).keyup(function(event){
+		function showGrid() {
+			$('.container_15').append('<div class="show_grid" />');
+			for (i=0;i<COLUMNS;i++) {
+				$('.show_grid').append('<div class="column">'+(i+1)+'</div>');
+				}
+		}
+		function hideGrid() {
 			if ($('.show_grid').length) {
 				$('.show_grid').remove();
 			}
+		}
+		$(document).keydown(function(e) {		
+			if (e.shiftKey) {
+				showGrid();
+			}
 		});
+		$(document).keyup(function(event){
+			hideGrid();
+		});
+	}
+	
+	// Arrow project nav
+	if ($(".project").data()) {
+		var projectData = $(".project").data();
+		if ( projectData.next ) {
+			$(document).keydown(function(e){
+			    if (e.keyCode == 37) { 
+			       window.location.href = projectData.next;
+			       return false;
+			    }
+			});
+		}
+		if ( projectData.prev ) {
+			$(document).keydown(function(e){
+			    if (e.keyCode == 39) { 
+			       window.location.href = projectData.prev;
+			       return false;
+			    }
+			});
+		}
 	}
 
 

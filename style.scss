@@ -89,15 +89,17 @@ $red: rgba(223,0,0,1);
 $black: rgba(0,0,0,1);
 $dark_gray: rgba(50,50,50,1);
 $gray: rgba(100,100,100,1);
-$light_gray: rgba(200,200,200,1);
+$light_gray: rgba(210,210,210,1);
 $ultralight_gray: rgba(240,240,240,1);
 $ultramostlight_gray: rgba(240,240,240,0.3);
 $off_white: rgba(250,250,250,1);
 $yellow: rgba(255,232,0,1);
+$white: rgba(255,255,255,1);
 
 /*
 cg FONT STACKS
 */
+
 @mixin helvetica-font {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -106,8 +108,8 @@ cg FONT STACKS
 	text-transform: uppercase;
 	letter-spacing: .2em;
 }
-@mixin georgia-font {
-	font-family: 'Georgia', serif;
+@mixin serif-font {
+	font-family: 'Adobe Garamond Pro', 'Adobe Garamond', 'Garamond', 'Georgia', serif;
 }
 
 
@@ -138,6 +140,14 @@ a:link, a:visited {
 }
 a:hover {
   color: $light_blue; 
+}
+a.pdf:after {
+	@include helvetica-font;
+	content: 'PDF';
+	font-size: .7em;
+	letter-spacing: .1em;
+	line-height: 1em;
+	padding: 0 .25em .3em .5em;
 }
 hr {
 	border: 0 $light_gray solid;
@@ -174,20 +184,24 @@ h6 {
 	font-size: 1em;
 }
 ol {
-	list-style: decimal
+	list-style: none;
+	padding: 0;
 }
 ul {
-	list-style: disc
+	list-style: none;
+	padding: 0;
 }
 li {
-	margin-left: 2em;
+	margin-left: 0;
 }
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
 	margin-bottom: 2em;
+	margin-top: 0;
 }
 img {
 	max-width: 100%;
 	height: auto;
+	border: 0;
 }
 
 /* COMMON TYPE */
@@ -195,18 +209,18 @@ img {
 .small-title {
 	text-transform: uppercase;
 	font-size: .75em;
-	letter-spacing: .2em;
+	letter-spacing: .25em;
 }
 
 .big-title {
-	@include georgia-font;
+	@include serif-font;
 	font-size: 3em;
 	font-style: italic;
 	line-height: 1.1em;
 }
 
 .label {
-	padding: .25em .5em;
+	padding: .5em 1em .6em 1em;
 	background: $yellow;
 	font-size: .75em;
 	text-transform: uppercase;
@@ -214,9 +228,14 @@ img {
 	float: left;
 	color: $dark_gray;
 	letter-spacing: .2em;
-	margin-left: -.5em;
 	line-height: 1em;
+	margin: 0;
+	margin-left: -1em;
 	min-width: $column + $gutter;
+	&.above {
+		position: absolute;
+		top: -3.5em;
+	}
 }
 
 /* GRID CONTAINER */
@@ -234,41 +253,40 @@ img {
 
 /* COMMON LAYOUT */
 
+body {
+	border-top: 50% solid red;
+	border-right: 50% solid #f6f6f6;
+}
+
 .content {
 	@include width(12, $gutter);
 	@include prefix(3, $gutter);
-	margin-top: $1col;
-	margin-bottom: $2cols;
-}
-
-.half, .size-medium {
-	@include width(6);
-	margin-bottom: $gutter;
-	&:nth-child(even) {
-		margin-right: 0;
+	margin-top: $2cols;
+	margin-bottom: $1col;
+	.full, .size-large {
+		@include width(12);
+		margin-bottom: $gutter;
+		font-size: 1em;
 	}
-	img {
-		border: 0;	
+	.half, .size-medium {
+		@include width(6);
+		margin-bottom: $gutter;
+		font-size: 1em;
 	}
-}
-
-.third, .size-small {
-	@include width(4);
-	&:nth-child(3n) {
-		margin-right: 0;
+	.third, .size-thumbnail {
+		@include width(4);
+		margin-bottom: $gutter;
+		font-size: 1em;
 	}
 }
 
 .clear {
   clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
 }
 
 /* CUSTOM */
+
+/* UNIVERSAL HEADER */
 
 header {
   width: (2 * ($column + $gutter)) + ($column * .5);
@@ -315,49 +333,55 @@ header {
 	    margin: 0;
 	    font-size: .8em;
 	    color: $gray;
+	    display: block;
 	  }
   }
-	ul.nav {
+	ul.nav, ul.services {
 		list-style: none;
 		padding: 0;
 		display: block;
 		float: left;
 		width: 100%;
 		margin: $gutter 0;
+		color: rgba(210,210,210,1);
 		li {
 			margin: 0;
+			float: left;
+			padding: .5em 0;
+			text-transform: uppercase;
+			font-size: .75em;
+			letter-spacing: .25em;
+			border-bottom: .2em solid $ultralight_gray;
+			width: 100%;
 			a {
 				display: block;
-				float: left;
-				padding: .5em 0;
-				width: 100%;
-				border-bottom: .2em solid $ultralight_gray;
 			}
 			&.active a {
 				color: $black;
+			}
+			&:last-child {
+				border-bottom: 0;
 			}
 		}
 	}
 }
 
-
-
 /* HOME */
 
+.home .content {
+	margin-bottom: $1col + $gutter;
+}
+
 .home .half {
-	height: $4cols;
+	display: block;
+	height: auto;
+	margin-bottom: $1col;
 }
 
 .home .intro {
-	height: $3cols;
-	padding-top: $1col;
-	h2 {
-		position: absolute;
-		top: -$1col;
-		left: 0;
-	}
+	height: $4cols;
 	h3 {
-		margin: 0;
+		margin: 0 0 .5em 0;
 	}
 	&:after {
     display: block;
@@ -371,99 +395,221 @@ header {
 }
 
 .home .project {
-	position: relative;
 	h3 {
-		@include oswald-font;
 		position: absolute;
-		top: $4cols + ($gutter * 2.2);
+		margin: 0;
+		line-height: 1em;
+		bottom: -1.2em;
 		left: 0;
+		text-transform: none;
+		letter-spacing: .1em;
+		font-size: 1em;
+		display: none;
+	}
+	ul.processes {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		li {
+			@include oswald-font;
+			font-style: italic;
+			margin: 0;
+			display: block;
+			float: left;
+			clear: left;
+			font-size: .75em;
+			background: rgba(0,0,0,0.4);
+			color: rgba(255,255,255,1);
+			letter-spacing: .25em;
+			padding: .5em 1em;
+		}
+	}
+	&:hover ul.processes, &:hover h3 {
+		display: block;
 	}
 }
 
 /* SINGLE */
 
 .single .project {
+	.intro {
+		@include width(12, $gutter);
+		.title {
+			@include width(6);
+			h1 {
+				@include serif-font;
+				font-style: italic;
+				font-size: 3em;
+				line-height: 1.1em;
+				margin-top: 0;
+				margin-bottom: 1em;
+			}
+		}
+		ul.processes {
+			@include width(4, $gutter);
+			@include prefix(2);
+			list-style: none;
+			padding: 0;
+			li {
+				@include width(2);
+			}
+		}
+	}
 	p {
-		@include georgia-font;
+		@include serif-font;
 		line-height: 1.6em;
-		font-size: 1.2em;
+		font-size: 1.3em;
+		margin: 1em 0 $column;
+		padding-right: $1col;
+		display: block;
+		float: left;
+		width: auto;
 	}
-	.meta {
-		width(12);
-		background: $gray;
-		margin: 1em 0;
-	}
-	.size-small {
-		@include width(4);
+	img {
 		margin-bottom: $gutter;
 	}
-	.size-medium {
-		@include width(6);
-		margin-bottom: $gutter;
-	}
-	.size-large {
-		@include width(12);
-		margin-bottom: $gutter;
+	.wp-caption {
+		margin-bottom: 2em;
+		display: block;
+		float: left;
+		width: auto !important;
+		img, iframe {
+			margin-bottom: .75em;
+			display: block;
+			float: left;
+			margin-right: $gutter;
+		}
+		p {
+			@include helvetica-font;
+			color: $gray;
+			margin: 0;
+			line-height: 1.6em;
+			text-transform: none;
+			letter-spacing: .05em;
+			font-size: 1em;
+			padding: 0;
+			width: auto;
+			display: block;
+			float: left;
+			clear: left;
+			word-wrap: break-word;
+			max-width: $6cols;
+		}
 	}
 }
 
-.footer {
-	@include width(12);
-	margin-left: $3cols + (2 * $gutter);
-	background: $ultralight_gray;
-  h2 {
-		padding: .25em .5em;
-		background: $yellow;
-		font-size: .75em;
-		text-transform: uppercase;
-		display: block;
-		float: left;
-		color: $dark_gray;
-		letter-spacing: .2em;
-  	margin-bottom: .1em;
-  }
+/* PRINCIPAL */
+
+.principal {
+	@include width(12, $gutter);
+	@include prefix(3, $gutter);
+	margin-bottom: $1col;
+	h2.above {
+		4em;
+	}
   .bio {
   	@include width(6);
-		.pic {
-			@include width(2);
-			margin-bottom: .5em;
-			margin-top: .5em;
-			img {
-				width: 100%;
-				height: auto;
+  	p {
+			.pic {
+				@include width(2);
+				margin-bottom: .5em;
+				margin-top: .5em;
+				outline: 1px solid $light_gray;
+				line-height: 1em;
+				padding: 0;
+				height: 105px;
+				overflow: hidden;
+				font-size: 1em;
+				img {
+					width: 100%;
+					height: auto;
+				}
 			}
 		}
 	}
 	.bio-meta {
-		@include width(6);
-		margin-right: 0;
+		@include width(6, $gutter);
+		h3 {
+			font-size: 1em;
+			letter-spacing: .1em;
+			line-height: 1em;
+			border-bottom: .2em solid $ultralight_gray;
+			margin-bottom: $gutter / 2;
+			color: $gray;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			li {
+				margin-left: 0;
+			}
+		}
 		.pinterest {
-			ul {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				li {
-					@include width(2);
+			@include width(4, $gutter);
+			margin-top: -1em;
+			h3 {
+				margin-right: $gutter;
+			}
+			li {
+				@include width(2);
+				height: (($column * 2) + $gutter) * .666;
+				margin-bottom: $gutter / 2;
+				overflow: hidden;
+				outline: 1px solid $light_gray;
+				background: $light_gray;
+				p {
 					margin: 0;
-					p {
-						margin: 0;
-						font-size: 0;
-						line-height: 0;
-						text-indent: -9999em;
-						overflow: hidden;
-						img {
-							text-indent: 9999em;
-							max-height: $2cols;
-							width: auto;
-						}
-					}
+					font-size: 0;
+					line-height: 0;
+					text-indent: -9999em;
+					overflow: hidden;
+				}
+				img {
+					min-height: 100%;
+					min-width: 100%;
+					max-width: 100%;
 				}
 			}
 		}
+		.twitter {
+			@include width(2);
+			margin-top: -1em;
+			.timestamp {
+				font-size: .8em;
+				text-transform: uppercase;
+				display: block;
+			}
+		}
 		.contact {
+			@include width(3);
 		}
 	}
 }
+
+/* FOOTER */
+
+.footer {
+	@include width(12, $gutter);
+	@include prefix(3, $gutter);
+	margin-bottom: $1col;
+	color: $light_gray;
+	p {
+		font-size: .9em;
+	}
+	a {
+		color: $light_gray;
+		text-decoration: underline;
+		&:hover {
+			color: $gray;
+		}
+	}
+}
+
+
 
 // For js function to show grid on shift press
 .show_grid {

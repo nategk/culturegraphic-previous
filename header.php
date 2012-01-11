@@ -45,8 +45,23 @@
   	wp_head();
   	flush_rewrite_rules();
   ?>
+  <script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/js/jquery.masonry.min.js"></script>
   <script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/js/dom.js"></script>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+  <link id="favicon" rel="icon" type="image/png" href="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark-icon.png" /> 
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-9815746-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
 </head>
 <body <?php body_class('container_15'); ?> <?php language_attributes(); ?>>
 
@@ -67,19 +82,38 @@
     ?>
     
 		<?php
+
+		if ( is_home() ) {	
+			$args = array(
+				'orderby' => 'count',
+				'order' => 'ASC',
+				'number' => 5
+			);
+			$terms = get_terms("process",$args);
+			$count = count($terms);
+			if ( $count > 0 ){
+				echo '<ul class="services">';
+				foreach ( $terms as $term ) {
+					echo '<li>' . $term->name . '</li>';
+				}
+				echo '<li>Etc.</li>';
+				echo "</ul>";
+			}
+		}
+
 		if ( is_single() ) {
 			$project_title = get_the_title();
 			$args = array(
 				'post_type' => 'project',
 				'orderby' => 'date',
-				'order'  => 'ASC'
+				'order'  => 'DESC'
 			);
 			$projects = new WP_Query( $args );
 			if ($projects->have_posts()) {
 			?>
 				<ul class="nav" role="navigation">
 				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-					<li class="small-title<?php if ($project_title == get_the_title()) echo " active"; ?>"><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
+					<li<?php if ($project_title == get_the_title()) echo ' class="active"'; ?>><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
 				<?php
 				endwhile;
 				?>

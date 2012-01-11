@@ -27,25 +27,44 @@ get_header(); ?>
 
 <!-- Start the Loop. -->
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-  <div id="<?php echo $post->post_name; ?>" <?php post_class('content'); ?>>
-  	<div class="meta">
-			<h1 class="label"><?php the_title(); ?></h1>
-			<p><?php echo the_date('Y'); ?></p>
-			<p>
+  <div id="<?php echo $post->post_name; ?>" <?php post_class('content'); ?> <?php if (get_next_post()) echo 'data-next="' . get_permalink(get_next_post()->ID) . '"'; ?> <?php if (get_previous_post()) echo 'data-prev="' . get_permalink(get_previous_post()->ID) . '"'; ?>>
+  	<div class="intro">
+	  	<div class="title half">
 				<?php
-				$args = array(
-					'taxonomy' => 'process',
-					'orderby' => 'name'
-				);
-				wp_tag_cloud($args);
+				$clients = get_the_terms( $post->ID, 'client' );
+				if ( $clients && ! is_wp_error( $clients ) ) {
 				?>
-			</p>
-<!--
-			<p class="third">Client, Date</p>
-			<p class="third">Processes</p>
--->
-		</div>
-		<?php the_content(); ?>
+					<div class="label above">
+						<?php
+						foreach ( $clients as $client ) {
+							echo $client->name;
+						}
+						?>
+					</div>
+				<?php 
+				}
+				?>
+	  		<h1><?php the_title(); ?></h1>
+	  	</div><!-- .title -->
+			<?php
+			$processes = get_the_terms( $post->ID, 'process' );
+			if ( $processes && ! is_wp_error( $processes ) ) {
+			?>
+				<ul class="processes">
+					<?php
+					foreach ( $processes as $process ) {
+						echo "<li>" . $process->name . "</li>";
+					}
+					?>
+				</ul>
+			<?php 
+			}
+			?>
+			<!-- <p class="date"><?php echo the_date('Y'); ?></p> -->
+		</div><!-- .intro -->
+		<div class="body">
+			<?php the_content(); ?>
+		</div><!-- .body -->
 	</div><!-- #<?php echo $post->post_name; ?> -->
 <?php endwhile; endif; ?>
 

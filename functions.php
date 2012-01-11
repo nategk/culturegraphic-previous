@@ -14,18 +14,26 @@ function generate_css() {
 add_action( 'after_setup_theme', 'generate_css' );
 
 
-// Post thumbs
-add_theme_support( 'post-thumbnails' );
-// Add front page size
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'small', 365, 0, false );
+if ( function_exists( 'add_theme_support' ) ) {
+	add_theme_support( 'post-thumbnails' ); 
 }
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'medium-cropped', 365, 235, true );
+}
+
+// Remove title attr
+function remove_attachment_title_attr( $attr ) {
+	unset($attr['title']);
+	return $attr;
+}
+add_action('wp_get_attachment_image_attributes', 'remove_attachment_title_attr');
+
 
 // Remove auto p
 remove_filter( 'the_content', 'wpautop' );
 
-
-// Remove auto p
+// Use stylesheet for visual editor
+add_editor_style('style.css');
 
 
 
@@ -49,10 +57,11 @@ function showTweets($username, $items = 1){
 			foreach ( $rss_items as $item ) : ?>
 				<li>
 					<?php echo $item->get_description(); ?>
-					<br />
-					<a href='<?php echo ($items < 3 ? esc_url("http://twitter.com/#!/" . $username) : esc_url( $item->get_permalink() )); ?>'>
-						<?php echo human_time_diff( $item->get_date('U'), current_time('timestamp') ) . ' ago'; ?>
-					</a>
+					<span class="timestamp">
+						<a href='<?php echo ($items < 3 ? esc_url("http://twitter.com/#!/" . $username) : esc_url( $item->get_permalink() )); ?>'>
+							<?php echo human_time_diff( $item->get_date('U'), current_time('timestamp') ) . ' ago'; ?>
+						</a>
+					</span>
 				</li>
 			<?php endforeach; ?>
 		</ul>
@@ -119,7 +128,7 @@ function create_post_type() {
       'has_archive' => false,
       'rewrite' => array('slug' => 'project', 'with_front' => false),
       'hierarchical' => false,
-      'supports' => array('title','editor','author','thumbnail'),
+      'supports' => array('title','editor','author','thumbnail','revisions'),
       'taxonomies' => array('client','process')
     )
 	);
