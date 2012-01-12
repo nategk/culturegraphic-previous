@@ -202,6 +202,9 @@ img {
 	max-width: 100%;
 	height: auto;
 	border: 0;
+	&.loading {
+		background: $ultralight_gray;
+	}
 }
 
 /* COMMON TYPE */
@@ -300,22 +303,38 @@ header {
     width: 100%;
     height: $2cols;
     float: left;
+    position: relative;
     a {
+    	position: absolute;
     	width: 100%;
     	height: 100%;
+    	top: 0;
+    	left: 0;
+    	z-index: 10;
     	&:hover h1, &:hover h2 {
       	color: $blue;
     	}
     }
 	  background-color: $ultralight_gray;
+	  object {
+	  	width: 40px;
+	  	height: 40px;
+	  	margin-top: 1em;
+	  	margin-bottom: 0;
+	  	margin-left: auto;
+	  	margin-right: auto;
+	  	border: 0;
+	  	z-index: 1;
+	  	position: relative;
+	  }
 	  h1, h2 {
 	    @include oswald-font;
-	    padding-top: 6em;
 	    margin: 0;
 	    color: $black;
 	    font-size: .9em;
 	    text-transform: uppercase;
 	    letter-spacing: .2em;
+/*
 	    &:before {
 	      display: block;
 	      position: absolute;
@@ -327,6 +346,7 @@ header {
 	      content: ' ';
 	      margin-bottom: 0;
 	    }
+*/
 	  }
 	  span {
 	  	@include helvetica-font;
@@ -381,16 +401,7 @@ header {
 .home .intro {
 	height: $4cols;
 	h3 {
-		margin: 0 0 .5em 0;
-	}
-	&:after {
-    display: block;
-    position: absolute;
-		width: 96%;
-		bottom: 0;
-		height: 8em;
-		background: url('img/culturegraphic-process.svg') no-repeat center center;
-    content: ' ';
+		margin: 0 1em .5em 0;
 	}
 }
 
@@ -399,7 +410,7 @@ header {
 		position: absolute;
 		margin: 0;
 		line-height: 1em;
-		bottom: -1.2em;
+		bottom: -1.5em;
 		left: 0;
 		text-transform: none;
 		letter-spacing: .1em;

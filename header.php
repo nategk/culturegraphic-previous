@@ -25,7 +25,6 @@
 	</title>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-	<link rel="icon" type="image/svg+xml" href="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark.svg" />
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -50,7 +49,7 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <link id="favicon" rel="icon" type="image/png" href="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark-icon.png" /> 
 	<script type="text/javascript">
-	
+	/* <![CDATA[ */
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-9815746-1']);
 	  _gaq.push(['_trackPageview']);
@@ -60,7 +59,7 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-	
+	/* ]]> */
 	</script>
 </head>
 <body <?php body_class('container_15'); ?> <?php language_attributes(); ?>>
@@ -69,11 +68,13 @@
 
 		<?php if (is_home()) { ?>
 	    <div class="logo">
+	    	<object data="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark.svg" wmode="transparent" type="image/svg+xml"></object>
 	      <h1><?php bloginfo( 'name' ); ?> <span class="small-title"><?php bloginfo( 'description' ); ?></span></h1>
 	    </div><!-- .logo -->
     <?php } else { ?>
     	<div class="logo">
 		    <a href="<?php bloginfo('url'); ?>">
+		    	<object data="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark.svg" wmode="transparent" type="image/svg+xml"></object>
 		      <h2><?php bloginfo( 'name' ); ?> <span class="small-title"><?php bloginfo( 'description' ); ?></span></h2>
 		    </a><!-- a -->
 	    </div><!-- .logo -->
@@ -83,6 +84,7 @@
     
 		<?php
 
+/*
 		if ( is_home() ) {	
 			$args = array(
 				'orderby' => 'count',
@@ -100,9 +102,11 @@
 				echo "</ul>";
 			}
 		}
+*/
 
-		if ( is_single() ) {
-			$project_title = get_the_title();
+			if ( is_single() ) {
+				$project_title = get_the_title();
+			}
 			$args = array(
 				'post_type' => 'project',
 				'orderby' => 'date',
@@ -113,14 +117,14 @@
 			?>
 				<ul class="nav" role="navigation">
 				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-					<li<?php if ($project_title == get_the_title()) echo ' class="active"'; ?>><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
+					<li<?php if (($project_title != null) && ($project_title == get_the_title())) echo ' class="active"'; ?>><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
 				<?php
 				endwhile;
 				?>
 				</ul>
 				<?php
 			}
-		}
+		//
 		?>
     
   </header>

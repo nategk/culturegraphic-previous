@@ -1,10 +1,12 @@
 jQuery(document).ready(function($) {
   // Code that uses jQuery's $ can follow here.
   
+  // js running so we'll do masonry
 	$('.home .content .half').imagesLoaded( function(){
+		$('.home .content img').fadeIn();
 	  $('.home .content').masonry({
 	    itemSelector : '.half'
-	  }).masonry('reload');;
+	  }).masonry('reload');
 	});
 
 	if ($('.container_15').length) {

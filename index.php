@@ -19,6 +19,7 @@ get_header(); ?>
 	<div class="intro half">
 		<h2 class="label above">It's all about:</h2>
 		<h3 class="big-title">Form, function and joi de vivre in creative that serves purpose</h3>
+		<object data="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-process.svg" wmode="transparent" type="image/svg+xml"></object>
 	</div>
 	<?php /* If there are no posts to display, such as an empty archive page */ ?>
 	<?php if ( ! have_posts() ) : ?>
@@ -35,12 +36,17 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 		<!-- <h2 class="label">Projects</h2> -->
 	<?php while ( have_posts() ) : the_post(); ?>
-	  <div id="<?php echo $post->post_name; ?>" <?php post_class('half'); ?>>
+		<?php
+		$imgdata = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium' );
+		$imgheight = $imgdata[2]; // thumbnail's height
+		?>
+	  <div id="<?php echo $post->ID; ?>" <?php post_class('half'); ?> style="height:<?php echo $imgheight; ?>px;">
 			<a href="<?php the_permalink(); ?>" rel="bookmark">
 				<?php
 				$attr = array(
 					'alt'	=> get_the_title(),
 					'title'	=> false,
+					'id' => 'img-'.$post->ID
 				);
 				the_post_thumbnail('medium',$attr);
 				?>
@@ -61,6 +67,14 @@ get_header(); ?>
 				?>
 			</a>
 		</div><!-- #<?php echo $post->post_name; ?> -->
+		
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		var img = document.getElementById('img-<?php echo $post->ID; ?>');
+		img.style.display = "none";
+		/* ]]> */
+		</script>
+		
 	<?php endwhile; endif; ?>
 
 </div><!-- #content -->
