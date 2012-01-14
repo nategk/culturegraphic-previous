@@ -28,31 +28,31 @@ $gutter: $gutter / $em; // in ems
 // Column-widths in variables, in ems
 //
 
- $1col: ( 1 * ($column + $gutter) - $gutter);
- $2cols: ( 2 * ($column + $gutter) - $gutter);
- $3cols: ( 3 * ($column + $gutter) - $gutter);
- $4cols: ( 4 * ($column + $gutter) - $gutter);
- $5cols: ( 5 * ($column + $gutter) - $gutter);
- $6cols: ( 6 * ($column + $gutter) - $gutter);
- $7cols: ( 7 * ($column + $gutter) - $gutter);
- $8cols: ( 8 * ($column + $gutter) - $gutter);
- $9cols: ( 9 * ($column + $gutter) - $gutter);
-$10cols: (10 * ($column + $gutter) - $gutter);
-$11cols: (11 * ($column + $gutter) - $gutter);
-$12cols: (12 * ($column + $gutter) - $gutter);
-$13cols: (13 * ($column + $gutter) - $gutter);
-$14cols: (14 * ($column + $gutter) - $gutter);
-$15cols: (15 * ($column + $gutter) - $gutter);
-$16cols: (16 * ($column + $gutter) - $gutter);
-$17cols: (17 * ($column + $gutter) - $gutter);
-$18cols: (18 * ($column + $gutter) - $gutter);
-$19cols: (19 * ($column + $gutter) - $gutter);
-$20cols: (20 * ($column + $gutter) - $gutter);
-$21cols: (21 * ($column + $gutter) - $gutter);
-$22cols: (22 * ($column + $gutter) - $gutter);
-$23cols: (23 * ($column + $gutter) - $gutter);
-$24cols: (24 * ($column + $gutter) - $gutter);
-$25cols: (25 * ($column + $gutter) - $gutter);
+$col1: ( 1 * ($column + $gutter) - $gutter);
+$cols2: ( 2 * ($column + $gutter) - $gutter);
+$cols3: ( 3 * ($column + $gutter) - $gutter);
+$cols4: ( 4 * ($column + $gutter) - $gutter);
+$cols5: ( 5 * ($column + $gutter) - $gutter);
+$cols6: ( 6 * ($column + $gutter) - $gutter);
+$cols7: ( 7 * ($column + $gutter) - $gutter);
+$cols8: ( 8 * ($column + $gutter) - $gutter);
+$cols9: ( 9 * ($column + $gutter) - $gutter);
+$cols10: (10 * ($column + $gutter) - $gutter);
+$cols11: (11 * ($column + $gutter) - $gutter);
+$cols12: (12 * ($column + $gutter) - $gutter);
+$cols13: (13 * ($column + $gutter) - $gutter);
+$cols14: (14 * ($column + $gutter) - $gutter);
+$cols15: (15 * ($column + $gutter) - $gutter);
+$cols16: (16 * ($column + $gutter) - $gutter);
+$cols17: (17 * ($column + $gutter) - $gutter);
+$cols18: (18 * ($column + $gutter) - $gutter);
+$cols19: (19 * ($column + $gutter) - $gutter);
+$cols20: (20 * ($column + $gutter) - $gutter);
+$cols21: (21 * ($column + $gutter) - $gutter);
+$cols22: (22 * ($column + $gutter) - $gutter);
+$cols23: (23 * ($column + $gutter) - $gutter);
+$cols24: (24 * ($column + $gutter) - $gutter);
+$cols25: (25 * ($column + $gutter) - $gutter);
 
 //
 // Column-widths in a function, in ems
@@ -89,7 +89,7 @@ $red: rgba(223,0,0,1);
 $black: rgba(0,0,0,1);
 $dark_gray: rgba(50,50,50,1);
 $gray: rgba(100,100,100,1);
-$light_gray: rgba(210,210,210,1);
+$light_gray: rgba(200,200,200,1);
 $ultralight_gray: rgba(240,240,240,1);
 $ultramostlight_gray: rgba(240,240,240,0.3);
 $off_white: rgba(250,250,250,1);
@@ -132,7 +132,7 @@ body {
 	background: $off_white;
 }
 a:focus {
-	outline: 1px dotted
+	outline: none;
 }
 a:link, a:visited {
 	text-decoration: none;
@@ -198,7 +198,7 @@ p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
 	margin-bottom: 2em;
 	margin-top: 0;
 }
-img {
+img, iframe {
 	max-width: 100%;
 	height: auto;
 	border: 0;
@@ -243,12 +243,12 @@ img {
 
 /* GRID CONTAINER */
 
-.admin-bar .container_15 {
+.admin-bar .container {
 	padding-top: 28px;
 }
 
-.container_15 {
-  width: $15cols + ($gutter * 2);
+.container {
+  width: $cols15 + ($gutter * 2);
   position: relative;
   display: block;
   margin: 0 auto;
@@ -259,17 +259,30 @@ img {
 body {
 	border-top: 50% solid red;
 	border-right: 50% solid #f6f6f6;
+	// Smooth fade in of images when loaded per dom.js
+	&.JS .content img {
+		visibility: hidden;
+	}
+	&.JS .content iframe {
+		visibility: hidden;
+	}
+	&.JS .home .project {
+		visibility: hidden;
+	}
 }
 
 .content {
 	@include width(12, $gutter);
 	@include prefix(3, $gutter);
-	margin-top: $2cols;
-	margin-bottom: $1col;
-	.full, .size-large {
+	margin-top: $cols2;
+	margin-bottom: $col1;
+	.full, .size-large, .size-full {
 		@include width(12);
 		margin-bottom: $gutter;
 		font-size: 1em;
+		&.vimeo {
+			height: 35em;
+		}
 	}
 	.half, .size-medium {
 		@include width(6);
@@ -287,13 +300,64 @@ body {
   clear: both;
 }
 
+
 /* CUSTOM */
+
+.addthis_toolbox {
+ position: absolute;
+ right: $gutter;
+ width: 90px;
+ height: 20px;
+ top: 3em;
+ visibility: hidden;
+ .addthis_button_email, .addthis_button {
+ 	display: block;
+ 	float: right;
+ 	margin-left: 12px;
+ 	padding: 2px 0 0;
+ 	height: 16px;
+ 	width: 16px;
+ }
+ .addthis_button_facebook_send {
+ 	width: 55px;
+ 	padding: 0;
+ 	margin-right: 12px;
+ 	overflow: hidden;
+ }
+ .addthis_button_facebook_like {
+ 	float: right;
+ 	display: block;
+ 	margin-left: 12px;
+ 	width: 50px;
+ 	height: 20px;
+ 	overflow: hidden;
+ 	padding: 0;
+ }
+}
+
+/* ADD THIS */
+#at15s, #at16p {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+border-radius: 0;
+}
+#at15pf {
+	display: none;
+}
+#at15ptc, #at15sptx {
+	@include helvetica-font;
+	font-size: 1em;
+	&#at15sptx {
+		font-size: .75em;
+	}
+}
+/* Some day, customize that CSS! */
 
 /* UNIVERSAL HEADER */
 
-header {
+.header {
   width: (2 * ($column + $gutter)) + ($column * .5);
-  position: fixed;
+  position: absolute;
   display: block;
   margin-left: $gutter;
   text-align: center;
@@ -301,9 +365,10 @@ header {
   left: auto;
   .logo {
     width: 100%;
-    height: $2cols;
+    height: 9em;
     float: left;
     position: relative;
+    background-color: $ultralight_gray;
     a {
     	position: absolute;
     	width: 100%;
@@ -315,45 +380,37 @@ header {
       	color: $blue;
     	}
     }
-	  background-color: $ultralight_gray;
-	  object {
-	  	width: 40px;
-	  	height: 40px;
-	  	margin-top: 1em;
-	  	margin-bottom: 0;
-	  	margin-left: auto;
-	  	margin-right: auto;
-	  	border: 0;
-	  	z-index: 1;
-	  	position: relative;
-	  }
 	  h1, h2 {
 	    @include oswald-font;
-	    margin: 0;
+	    margin: 1em 0 1em 0;
 	    color: $black;
 	    font-size: .9em;
-	    text-transform: uppercase;
-	    letter-spacing: .2em;
-/*
 	    &:before {
 	      display: block;
-	      position: absolute;
-	      top: 1.5em;
+	      position: relative;
+	      margin-top: 1.5em;
+	      margin-bottom: 1em;
 	      left: 0;
-	      height: 3.5em;
+	      height: 4em;
 	      width: 100%;
 	      background: url('img/culturegraphic-logomark.svg') no-repeat center center;
 	      content: ' ';
-	      margin-bottom: 0;
+		    -o-background-size: auto 100%;
+				-webkit-background-size: auto 100%;
+				background-size: auto 100%;
 	    }
-*/
-	  }
-	  span {
-	  	@include helvetica-font;
-	    margin: 0;
-	    font-size: .8em;
-	    color: $gray;
-	    display: block;
+		  span {
+		  	@include helvetica-font;
+		    margin: 0;
+		    font-size: .8em;
+		    color: $gray;
+		    display: block;
+		  }
+		  &:after {
+		  	clear: both;
+		  	content: ' ';
+		  	height: 1px;
+		  }
 	  }
   }
 	ul.nav, ul.services {
@@ -389,33 +446,49 @@ header {
 /* HOME */
 
 .home .content {
-	margin-bottom: $1col + $gutter;
+	margin-bottom: $col1 + $gutter;
 }
 
 .home .half {
 	display: block;
 	height: auto;
-	margin-bottom: $1col;
+	margin-bottom: $col1;
 }
 
 .home .intro {
-	height: $4cols;
+	height: $cols4;
 	h3 {
 		margin: 0 1em .5em 0;
+	  &:after {
+	    display: block;
+	    position: relative;
+	    height: 120px;
+	    width: 100%;
+	    background: url('img/culturegraphic-process.svg') no-repeat center center;
+	    content: ' ';
+	    -o-background-size: 100% auto;
+			-webkit-background-size: 100% auto;
+			background-size: 100% auto;
+	  }
 	}
 }
 
 .home .project {
 	h3 {
-		position: absolute;
+		@include oswald-font;
+		font-style: italic;
 		margin: 0;
-		line-height: 1em;
-		bottom: -1.5em;
+		display: block;
+		position: absolute;
 		left: 0;
-		text-transform: none;
-		letter-spacing: .1em;
-		font-size: 1em;
-		display: none;
+		top: 0;
+		margin: 0;
+		width: auto;
+		font-size: .75em;
+		background: rgba(0,0,0,0.5);
+		color: rgba(255,255,255,1);
+		letter-spacing: .25em;
+		padding: .5em 1em;
 	}
 	ul.processes {
 		list-style: none;
@@ -435,12 +508,12 @@ header {
 			font-size: .75em;
 			background: rgba(0,0,0,0.4);
 			color: rgba(255,255,255,1);
-			letter-spacing: .25em;
+			letter-spacing: .2em;
 			padding: .5em 1em;
 		}
 	}
 	&:hover ul.processes, &:hover h3 {
-		display: block;
+		background: rgba(0,0,0,0.9);
 	}
 }
 
@@ -451,6 +524,7 @@ header {
 		@include width(12, $gutter);
 		.title {
 			@include width(6);
+			margin-bottom: 0;
 			h1 {
 				@include serif-font;
 				font-style: italic;
@@ -467,6 +541,8 @@ header {
 			padding: 0;
 			li {
 				@include width(2);
+				@include helvetica-font;
+				font-size: 1em;
 			}
 		}
 	}
@@ -475,7 +551,7 @@ header {
 		line-height: 1.6em;
 		font-size: 1.3em;
 		margin: 1em 0 $column;
-		padding-right: $1col;
+		padding-right: $col1;
 		display: block;
 		float: left;
 		width: auto;
@@ -484,17 +560,19 @@ header {
 		margin-bottom: $gutter;
 	}
 	.wp-caption {
-		margin-bottom: 2em;
+		margin-bottom: 3em;
 		display: block;
 		float: left;
 		width: auto !important;
+		position: relative;
 		img, iframe {
 			margin-bottom: .75em;
-			display: block;
-			float: left;
-			margin-right: $gutter;
 		}
 		p {
+			position: absolute;
+			left: 0;
+			bottom: -1.25em;
+			width: 90%;
 			@include helvetica-font;
 			color: $gray;
 			margin: 0;
@@ -503,12 +581,6 @@ header {
 			letter-spacing: .05em;
 			font-size: 1em;
 			padding: 0;
-			width: auto;
-			display: block;
-			float: left;
-			clear: left;
-			word-wrap: break-word;
-			max-width: $6cols;
 		}
 	}
 }
@@ -518,10 +590,7 @@ header {
 .principal {
 	@include width(12, $gutter);
 	@include prefix(3, $gutter);
-	margin-bottom: $1col;
-	h2.above {
-		4em;
-	}
+	margin-bottom: $col1;
   .bio {
   	@include width(6);
   	p {
@@ -606,7 +675,7 @@ header {
 .footer {
 	@include width(12, $gutter);
 	@include prefix(3, $gutter);
-	margin-bottom: $1col;
+	margin-bottom: $col1;
 	color: $light_gray;
 	p {
 		font-size: .9em;
@@ -621,11 +690,10 @@ header {
 }
 
 
-
 // For js function to show grid on shift press
 .show_grid {
 	display: block;
-  width: $15cols + $gutter;
+  width: $cols15 + $gutter;
   padding-left: $gutter;
   position: fixed;
   top: 0;
@@ -637,8 +705,110 @@ header {
 		@include width(1);
 		height: 100%;
 		background: rgba(0,200,254,0.1);
-		padding-top: 2em;
+		padding-top: 1em;
 		text-align: center;
 		color: rgba(0,200,254,1);
+	}
+}
+
+
+
+
+/* ADAPTIONS */
+@media screen and (min-width: 1000px) {
+	.header {
+		position: fixed;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.container {
+		 width: $cols6 + ($gutter * 2);
+		 -webkit-text-size-adjust:none;
+		 text-size-adjust:none;
+	}
+	.header {
+		@include width(6, $gutter);
+		position: relative;
+		.logo {
+			@include width(6);
+			height: 12em;
+			h1, h2 {
+				&:before {
+					height: 6em;
+				}
+			}
+		}
+		ul.nav {
+			li {
+				@include width(3);
+				a {
+					font-size: .8em;
+				}
+			}
+		}
+	}
+	.content {
+		@include width(6, $gutter);
+		margin-left: $gutter;
+		margin-top: $col1;
+		margin-bottom: $col1;
+		.full, .size-large, .size-full {
+			@include width(6);
+			margin-bottom: $gutter;
+			font-size: 1em;
+			&.vimeo {
+				height: 17em;
+			}
+		}
+		.half, .size-medium {
+			@include width(3);
+			margin-bottom: $gutter;
+			font-size: 1em;
+		}
+		.third, .size-thumbnail {
+			@include width(2);
+			margin-bottom: $gutter;
+			font-size: 1em;
+		}
+	}
+	.home .content .half, .home .content .size-medium {
+		@include width(6);
+	}
+	.principal, .footer {
+		@include width(6, $gutter);
+		margin-left: $gutter;
+		.bio {
+			margin-bottom: $gutter;
+		}
+	}
+	.single .project {
+		.intro {
+			@include width(6, $gutter);
+			h1 {
+				margin-bottom: 0;
+				height: auto;
+				padding: 0;
+			}
+			ul.processes {
+				margin-left: 0;
+				margin-top: 0;
+				margin-bottom: 3em;
+			}
+		}
+		.wp-caption {
+			margin-bottom: $gutter;
+			display: block;
+			float: left;
+			width: auto !important;
+			position: relative;
+			img, iframe {
+				margin-bottom: 0;
+				max-width: $cols6;
+			}
+			p {
+				display: none;
+			}
+		}
 	}
 }

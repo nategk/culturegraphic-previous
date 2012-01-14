@@ -15,9 +15,10 @@
 get_header(); ?>
 
 <div class="content" role="main">
+
 	<div class="intro half">
-		<h2 class="label above">Mission</h2>
-		<h3 class="big-title">Form, function, joi de vivre. Creative that serves purpose.</h3>
+		<h2 class="label above">It's all about:</h2>
+		<h3 class="big-title">Form, function and joi de vivre in creative that serves purpose</h3>
 	</div>
 	<?php /* If there are no posts to display, such as an empty archive page */ ?>
 	<?php if ( ! have_posts() ) : ?>
@@ -34,23 +35,17 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 		<!-- <h2 class="label">Projects</h2> -->
 	<?php while ( have_posts() ) : the_post(); ?>
-		<?php
-		$imgdata = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium' );
-		$imgheight = $imgdata[2]; // thumbnail's height
-		?>
-	  <div id="<?php echo $post->ID; ?>" <?php post_class('half'); ?> style="height:<?php echo $imgheight; ?>px;">
+	  <div id="<?php echo $post->post_name; ?>" <?php post_class('half'); ?>>
 			<a href="<?php the_permalink(); ?>" rel="bookmark">
 				<?php
 				$attr = array(
 					'alt'	=> get_the_title(),
 					'title'	=> false,
-					'id' => 'img-'.$post->ID
 				);
 				the_post_thumbnail('medium',$attr);
 				?>
 				<h3><?php the_title(); ?></h3>
 				<?php
-/*
 				$processes = get_the_terms( $post->ID, 'process' );
 				if ( $processes && ! is_wp_error( $processes ) ) {
 				?>
@@ -63,10 +58,18 @@ get_header(); ?>
 					</ul>
 				<?php 
 				}
-*/
 				?>
 			</a>
 		</div><!-- #<?php echo $post->post_name; ?> -->
+		
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		var arr = document.getElementsByTagName("img");
+		for (i = 0; i < arr.length; i++) {
+		   arr[i].style.display = "none";
+		}
+		/* ]]> */
+		</script>
 		
 	<?php endwhile; endif; ?>
 
@@ -94,7 +97,7 @@ get_header(); ?>
 	
 	<div class="bio-meta">
 		<div class="pinterest">
-			<h3><a href="http://pinterest.com/<?php echo $nickname; ?>">Likes</a></h3>
+			<h3><a href="http://pinterest.com/<?php echo $nickname; ?>">Likes</h3>
 			<?php
 			showPins($nickname,6);
 			?>

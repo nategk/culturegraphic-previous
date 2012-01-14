@@ -37,6 +37,7 @@ add_editor_style('style.css');
 
 
 
+
 function showTweets($username, $items = 1){
 	include_once(ABSPATH . WPINC . '/feed.php');
 	// Get a SimplePie feed object from the specified feed source.
@@ -128,11 +129,13 @@ function create_post_type() {
       'has_archive' => false,
       'rewrite' => array('slug' => 'project', 'with_front' => false),
       'hierarchical' => false,
-      'supports' => array('title','editor','author','thumbnail','revisions'),
+      'supports' => array('title','editor','author','thumbnail','revisions','excerpt'),
       'taxonomies' => array('client','process')
     )
 	);
 }
+
+
 
 
 

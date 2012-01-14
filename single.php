@@ -27,7 +27,7 @@ get_header(); ?>
 
 <!-- Start the Loop. -->
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-  <div id="<?php echo $post->post_name; ?>" <?php post_class('content'); ?> <?php if (get_next_post()) echo 'data-next="' . get_permalink(get_next_post()->ID) . '"'; ?> <?php if (get_previous_post()) echo 'data-prev="' . get_permalink(get_previous_post()->ID) . '"'; ?>>
+  <div id="<?php echo $post->ID; ?>" <?php post_class('content'); ?> <?php if (get_next_post()) echo 'data-next="' . get_permalink(get_next_post()->ID) . '"'; ?> <?php if (get_previous_post()) echo 'data-prev="' . get_permalink(get_previous_post()->ID) . '"'; ?>>
   	<div class="intro">
 	  	<div class="title half">
 				<?php
@@ -65,7 +65,7 @@ get_header(); ?>
 		<div class="body">
 			<?php the_content(); ?>
 		</div><!-- .body -->
-	</div><!-- #<?php echo $post->post_name; ?> -->
+	</div><!-- #<?php echo $post->ID; ?> -->
 <?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

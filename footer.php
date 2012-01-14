@@ -12,7 +12,7 @@
 ?>
 
 <div class="footer">
-	<p>&copy;2012 culturegraphic&nbsp;&nbsp;&middot;&nbsp;&nbsp;SASS'ed up Wordpress, <span class='grid_hover'>on a grid</span></a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="mailto:hello@culturegraphic.com">hello@culturegraphic.com</a></p>
+	<p>&copy;2012 culturegraphic&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="http://sass-lang.com/">SASS</a>'ed up, <a href="http://www.alistapart.com/articles/responsive-web-design/">responsive</a> <a href="http://wordpress.org/">Wordpress</a>, <span class='grid_hover'>on a <a href="http://framelessgrid.com/">grid</a></span>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="mailto:hello@culturegraphic.com">hello@culturegraphic.com</a></p>
 </div>
 
 <?php
