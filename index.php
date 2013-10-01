@@ -129,6 +129,7 @@ get_header(); ?>
 				<li><a href="http://instagram.com/natesayer/">Instagram</a></li>
 				<li><a href="https://github.com/culturegraphic">GitHub</a></li>
 				<li><a href="http://www.rdio.com/#/people/natesayer/">Rdio</a></li>
+				<li><a href="http://www.quora.com/Nathaniel-Kerksick">Quora</a></li>
 				<li><a href="http://www.linkedin.com/in/nathanielkerksick">LinkedIn</a></li>
 			</ul>
 		</div><!-- .contact -->
