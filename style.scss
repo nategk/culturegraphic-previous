@@ -88,8 +88,8 @@ $dark_green: rgba(0,123,56,1);
 $red: rgba(223,0,0,1);
 $black: rgba(0,0,0,1);
 $dark_gray: rgba(50,50,50,1);
-$gray: rgba(100,100,100,1);
-$light_gray: rgba(200,200,200,1);
+$gray: rgba(130,130,130,1);
+$light_gray: rgba(190,190,190,1);
 $ultralight_gray: rgba(240,240,240,1);
 $ultramostlight_gray: rgba(240,240,240,0.3);
 $off_white: rgba(250,250,250,1);
@@ -239,6 +239,9 @@ img, iframe {
 		position: absolute;
 		top: -3.5em;
 	}
+	a {
+		color: $dark_gray;
+	}
 }
 
 /* GRID CONTAINER */
@@ -259,6 +262,7 @@ img, iframe {
 body {
 	border-top: 50% solid red;
 	border-right: 50% solid #f6f6f6;
+	position: relative;
 	// Smooth fade in of images when loaded per dom.js
 	&.JS .content img {
 		visibility: hidden;
@@ -268,6 +272,19 @@ body {
 	}
 	&.JS .home .project {
 		visibility: hidden;
+	}
+	&:after {
+		position: fixed;
+		left: $gutter;
+		top: 50%;
+		right: $gutter;
+		height: 1px;
+		background: $light_gray;
+		content: ' ';
+		z-index: -1;
+		opacity: .4;
+		-webkit-transform: rotate(-30deg);
+		transform: rotate(-30deg);
 	}
 }
 
@@ -296,6 +313,10 @@ body {
 	}
 }
 
+.centered {
+	text-align: center;
+}
+
 .clear {
   clear: both;
 }
@@ -303,14 +324,29 @@ body {
 
 /* CUSTOM */
 
+.twitter-follow-button-container {
+position: absolute;
+right: $gutter;
+width: 123px;
+height: 20px;
+top: 3em;
+overflow: hidden;
+visibility: hidden;
+	a {
+		visibility: hidden;
+	}
+}
+
+/* ADD THIS - HIDE for now
 .addthis_toolbox {
  position: absolute;
  right: $gutter;
- width: 90px;
+ width: 130px;
  height: 20px;
  top: 3em;
  visibility: hidden;
  .addthis_button_email, .addthis_button {
+ 	margin: 0;
  	display: block;
  	float: right;
  	margin-left: 12px;
@@ -319,23 +355,23 @@ body {
  	width: 16px;
  }
  .addthis_button_facebook_send {
+ 	margin: 0;
  	width: 55px;
  	padding: 0;
  	margin-right: 12px;
  	overflow: hidden;
  }
  .addthis_button_facebook_like {
+ 	margin: 0;
  	float: right;
  	display: block;
  	margin-left: 12px;
- 	width: 50px;
+ 	width: 80px;
  	height: 20px;
  	overflow: hidden;
  	padding: 0;
  }
 }
-
-/* ADD THIS */
 #at15s, #at16p {
 -moz-border-radius: 0;
 -webkit-border-radius: 0;
@@ -351,7 +387,8 @@ border-radius: 0;
 		font-size: .75em;
 	}
 }
-/* Some day, customize that CSS! */
+*/
+
 
 /* UNIVERSAL HEADER */
 
@@ -363,6 +400,7 @@ border-radius: 0;
   text-align: center;
   top: auto;
   left: auto;
+  z-index: 1;
   .logo {
     width: 100%;
     height: 9em;
@@ -517,9 +555,9 @@ border-radius: 0;
 	}
 }
 
-/* SINGLE */
+/* SINGLE, PAGE */
 
-.single .project {
+.single, .page {
 	.intro {
 		@include width(12, $gutter);
 		.title {
@@ -546,41 +584,72 @@ border-radius: 0;
 			}
 		}
 	}
-	p {
-		@include serif-font;
-		line-height: 1.6em;
-		font-size: 1.3em;
-		margin: 1em 0 $column;
-		padding-right: $col1;
-		display: block;
-		float: left;
-		width: auto;
-	}
-	img {
-		margin-bottom: $gutter;
-	}
-	.wp-caption {
-		margin-bottom: 3em;
-		display: block;
-		float: left;
-		width: auto !important;
-		position: relative;
-		img, iframe {
-			margin-bottom: .75em;
-		}
+	.content {
 		p {
-			position: absolute;
-			left: 0;
-			bottom: -1.25em;
-			width: 90%;
-			@include helvetica-font;
-			color: $gray;
-			margin: 0;
-			line-height: 1.6em;
-			text-transform: none;
-			letter-spacing: .05em;
+			@include serif-font;
+			line-height: 1.4em;
+			font-size: 1.5em;
+			margin: 1em 0 $column;
+			padding-right: $col1;
+			display: block;
+			float: left;
+			width: auto;
+		}
+		img {
+			margin-bottom: $gutter;
+		}
+		.wp-caption {
+			margin-bottom: 3em;
+			display: block;
+			float: left;
+			width: auto !important;
+			position: relative;
+			img, iframe {
+				margin-bottom: .75em;
+			}
+			p {
+				position: absolute;
+				left: 0;
+				bottom: -1.25em;
+				width: 90%;
+				@include helvetica-font;
+				color: $gray;
+				margin: 0;
+				line-height: 1.6em;
+				text-transform: none;
+				letter-spacing: .05em;
+				font-size: 1.1em;
+				padding: 0;
+			}
+		}
+	}
+}
+
+/* SERVICES */
+
+.services {
+	@include width(12, $gutter);
+	@include prefix(3, $gutter);
+	margin-bottom: $cols2;
+	padding-top: .5em;
+	ul {
+		li {	
+			@include width(3);
 			font-size: 1em;
-			padding: 0;
+			border-bottom: .2em solid $ultralight_gray;
+			margin-bottom: 1em;
+			h3 {
+				@include serif-font;
+				font-size: 1.4em;
+				font-style: italic;
+				margin-bottom: 0;
+			}
+			p {
+				display: none;
+				margin: 0;
+				font-size: .9em;
+				color: $gray;
+			}
 		}
 	}
 }
@@ -603,7 +672,7 @@ border-radius: 0;
 				padding: 0;
 				height: 105px;
 				overflow: hidden;
-				font-size: 1em;
+				font-size: 1.1em;
 				img {
 					width: 100%;
 					height: auto;
@@ -665,7 +734,55 @@ border-radius: 0;
 			}
 		}
 		.contact {
-			@include width(3);
+			@include width(2);
+			margin-top: -1em;
+		}
+	}
+}
+
+/* ABOUT */
+
+body.page {
+	&:after {
+		opacity: .3;
+	}
+	.content {
+		@include width(15);
+		margin-left: $gutter;
+		margin-top: 6em;
+		img.portrait {
+			margin: 3em 0;
+			width: 320px;
+			height: 320px;
+			display: block;
+			margin: 0 auto;
+		}
+		h1 {
+			@include helvetica-font;
+			font-weight: bold;
+			margin: 1em auto 0;
+			font-size: 2.4em;
+		}
+		h2 {
+			font-size: 1.6em;
+			line-height: 1.1em;
+			color: $green;
+		}
+		h3 {
+			@include width(3, $gutter);
+			color: $light-gray;
+		}
+		section {
+			@include width(9, $gutter);
+		}
+		p {
+			margin-top: 0;
+		}
+		li {
+			@include width(2);
+			font-size: 1.6em;
+			color: $green;
+			line-height: 1.4em;
 		}
 	}
 }
@@ -680,6 +797,10 @@ border-radius: 0;
 	p {
 		font-size: .9em;
 	}
+	.grid_hover {
+	 z-index: 99999;
+	 position: relative;
+	}
 	a {
 		color: $light_gray;
 		text-decoration: underline;
@@ -692,7 +813,7 @@ border-radius: 0;
 
 // For js function to show grid on shift press
 .show_grid {
-	display: block;
+	display: none;
   width: $cols15 + $gutter;
   padding-left: $gutter;
   position: fixed;
@@ -701,6 +822,7 @@ border-radius: 0;
   overflow: visible;
   background: rgba(0,200,254,0.1);
   height: 100%;
+  z-index: -1;
 	.column {
 		@include width(1);
 		height: 100%;
@@ -714,6 +836,8 @@ border-radius: 0;
 
 
 
+
+
 /* ADAPTIONS */
 @media screen and (min-width: 1000px) {
 	.header {
@@ -722,6 +846,9 @@ border-radius: 0;
 }
 
 @media screen and (max-width: 480px) {
+	.twitter-follow-button {
+		display: none;
+	}
 	.container {
 		 width: $cols6 + ($gutter * 2);
 		 -webkit-text-size-adjust:none;
@@ -729,6 +856,7 @@ border-radius: 0;
 	}
 	.header {
 		@include width(6, $gutter);
+		margin-left: $gutter;
 		position: relative;
 		.logo {
 			@include width(6);
@@ -748,11 +876,14 @@ border-radius: 0;
 			}
 		}
 	}
-	.content {
-		@include width(6, $gutter);
+	.content, body.page .content {
+		@include width(6);
 		margin-left: $gutter;
 		margin-top: $col1;
 		margin-bottom: $col1;
+		img {
+		  height: auto !important;
+		}
 		.full, .size-large, .size-full {
 			@include width(6);
 			margin-bottom: $gutter;
@@ -771,9 +902,30 @@ border-radius: 0;
 			margin-bottom: $gutter;
 			font-size: 1em;
 		}
+		img.portrait {
+			margin: 3em 0;
+			width: 240px;
+			height: 240px;
+			display: block;
+			margin: 0 auto;
+		}
+		section {
+			@include width(6);
+			p {
+				padding-right: 1em;
+			}
+		}
 	}
-	.home .content .half, .home .content .size-medium {
-		@include width(6);
+	.home {
+		.half, .size-medium {
+			@include width(6);
+		}
+		.services { 
+			@include width(6, $gutter);
+			margin-left: $gutter;
+			li {
+			}
+		}
 	}
 	.principal, .footer {
 		@include width(6, $gutter);

@@ -1,3 +1,11 @@
+<?php
+// PHP session info
+if(isset($_SESSION['views']))
+	$_SESSION['views'] = $_SESSION['views'] + 1;
+else
+	$_SESSION['views'] = 1;
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en-US" lang="en-US">
 <head>
@@ -12,6 +20,9 @@
 		<meta property="og:description" content="<?php bloginfo( 'description', 'display' ); ?>"/>
 		<meta property="og:image" content="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logo.png"/>
 		<meta property="og:type" content="company"/>
+    <meta property="og:url" content="<?php echo get_bloginfo( 'url' ); ?>"/>
+    <meta property="fb:admins" content="natesayer"/>
+    <meta property="og:site_name" content="culturegraphic"/>
 	<?php } else {
 		$this_post = get_post($post->ID);
 		?>
@@ -23,13 +34,12 @@
 			<meta property="og:type" content="company:project"/>
 		<?php } ?>
 	<?php } ?>
-	<meta property="fb:admins" content="natesayer"/>
-	<meta property="og:site_name" content="culturegraphic"/>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 	<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+
   <?php
   	/* We add some JavaScript to pages with the comment form
   	 * to support sites with threaded comments (when in use).
@@ -50,6 +60,7 @@
   <script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/js/dom.js"></script>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <link id="favicon" rel="icon" type="image/png" href="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark-icon.png" /> 
+  <link rel="apple-touch-icon" href="<?php bloginfo( 'template_url' ); ?>/img/culturegraphic-logomark-icon.png"/>
 	<script type="text/javascript">
 	/* <![CDATA[ */
 	  var _gaq = _gaq || [];
@@ -64,7 +75,7 @@
 	/* ]]> */
 	</script>
 </head>
-<body <?php body_class('container'); ?> <?php language_attributes(); ?>>
+<body <?php body_class('container ' . session_id()); ?> <?php language_attributes(); ?>>
 
 	<script type="text/javascript">
 	/* <![CDATA[ */
@@ -72,29 +83,10 @@
 	body[0].className += " JS";
 	/* ]]> */
 	</script>
-	
-	<!-- AddThis Button BEGIN -->
-	<div class="addthis_toolbox addthis_default_style ">
-		<!-- <a class="addthis_button_facebook_send" fb:send:font="arial"></a> -->
-		<a href="http://www.addthis.com/bookmark.php" class="addthis_button" style="text-decoration:none;"><img src="http://s7.addthis.com/static/btn/sm-plus.gif" width="16" height="16" border="0" alt="Share" /></a>
-		<a class="addthis_button_facebook_like" fb:like:font="arial" fb:like:layout="button_count" fb:like:href="<?php echo get_bloginfo( 'url' ); ?>"></a>
+
+	<div class="twitter-follow-button-container">
+		<a href="https://twitter.com/natesayer" class="twitter-follow-button" data-show-count="false">Follow @natesayer</a>
 	</div>
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var addthis_config = {
-		pubid: "ra-4d7f74b4602b5a44",
-		services_compact: "email,facebook,twitter,google_plusone_badge,pinterest,delicious",
-		services_exclude: "reddit,print,stumbleupon,blogger,favorites,gmail,google",
-    ui_header_color: "#333333",
-    ui_header_background: "#f1f1f1",
-    ui_use_css: true,
-    ui_offset_left: -240,
-    data_ga_tracker: "UA-9815746-1",
-    data_track_clickback: true
-	}
-	/* ]]> */</script>
-	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4d7f74b4602b5a44"></script>
-	<!-- AddThis Button END -->
 
   <div class="header">
 
@@ -112,49 +104,37 @@
     }
     ?>
     
-		<?php
+    <?php
+    if ( !is_page() ) {
+    ?>
 
-/*
-		if ( is_home() ) {	
-			$args = array(
-				'orderby' => 'count',
-				'order' => 'ASC',
-				'number' => 5
-			);
-			$terms = get_terms("process",$args);
-			$count = count($terms);
-			if ( $count > 0 ){
-				echo '<ul class="services">';
-				foreach ( $terms as $term ) {
-					echo '<li>' . $term->name . '</li>';
-				}
-				echo '<li>Etc.</li>';
-				echo "</ul>";
-			}
-		}
-*/
+      <ul class="nav" role="navigation">
+        <li><a href="/about" />About</a></li>
+    		<?php
+          // Projects
+    			if ( is_single() ) {
+    				$project_title = get_the_title();
+    			}
+    			$project_args = array(
+    				'post_type' => 'project',
+    				'orderby' => 'date',
+    				'order'  => 'DESC'
+    			);
+    			$projects = new WP_Query( $project_args );
+    			if ($projects->have_posts()) {
+    			?>
+    				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
+    					<li<?php if ((isset($project_title)) && ($project_title == get_the_title())) echo ' class="active"'; ?>><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
+    				<?php
+    				endwhile;
+    				?>
+    				<?php
+    			}
+        ?>
+      </ul>
 
-			if ( is_single() ) {
-				$project_title = get_the_title();
-			}
-			$args = array(
-				'post_type' => 'project',
-				'orderby' => 'date',
-				'order'  => 'DESC'
-			);
-			$projects = new WP_Query( $args );
-			if ($projects->have_posts()) {
-			?>
-				<ul class="nav" role="navigation">
-				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-					<li<?php if ((isset($project_title)) && ($project_title == get_the_title())) echo ' class="active"'; ?>><a href="<?php the_permalink(); ?>"><?php echo $post->post_name; ?></a></li>
-				<?php
-				endwhile;
-				?>
-				</ul>
-				<?php
-			}
-		//
-		?>
+    <?php
+    }
+    ?>
     
   </div>

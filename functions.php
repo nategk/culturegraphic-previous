@@ -5,13 +5,13 @@
  */
 
 
-
-// Enables SASS to CSS automatic generation
-function generate_css() {
-  if(function_exists('wpsass_define_stylesheet'))
-    wpsass_define_stylesheet("style.scss", "style.css", true);
+function init_session()
+{
+  if (!session_id()) {
+    session_start();
+  }
 }
-add_action( 'after_setup_theme', 'generate_css' );
+add_action('init', 'init_session', 1);
 
 
 if ( function_exists( 'add_theme_support' ) ) {
@@ -173,6 +173,32 @@ function my_get_posts( $query ) {
 		$query->set( 'post_type', array( 'project' ) );
 	return $query;
 }
+
+
+/**
+ * Attach a class to linked images' parent anchors
+ * e.g. a img => a.img img
+ */
+function image_and_image_link_tag_mods($html, $id, $caption, $title, $align, $url, $size, $alt = '' ){
+
+  $classes = 'img'; // separated by spaces, e.g. 'img image-link'
+  // check if there are already classes assigned to the anchor
+  if ( preg_match('/<a.*? class=".*?">/', $html) ) {
+    $html = preg_replace('/(<a.*? class=".*?)(".*?>)/', '$1 ' . $classes . '$2', $html);
+  } else {
+    $html = preg_replace('/(<a.*?)>/', '$1 class="' . $classes . '" >', $html);
+  }
+  
+  // Add title tag
+  $html = str_replace('alt=""','alt="'.$title.'"',$html);
+  
+  // Add css height
+  list( $img_src, $width, $height ) = image_downsize($id, $size);
+  $html = str_replace('/>','style="height:'.$height.'px;" />',$html);
+  
+  return $html;
+}
+add_filter('image_send_to_editor','image_and_image_link_tag_mods',10,8);
 
 
 

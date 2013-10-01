@@ -48,7 +48,7 @@ a.pdf:after {
   padding: 0 .25em .3em .5em; }
 
 hr {
-  border: 0 #c8c8c8 solid;
+  border: 0 #bebebe solid;
   border-top-width: 1px;
   clear: both;
   height: 0; }
@@ -127,17 +127,19 @@ img, iframe {
   line-height: 1em;
   margin: 0;
   margin-left: -1em;
-  min-width: 5.417em; }
+  min-width: 5.41667em; }
   .label.above {
     position: absolute;
     top: -3.5em; }
+  .label a {
+    color: #323232; }
 
 /* GRID CONTAINER */
 .admin-bar .container {
   padding-top: 28px; }
 
 .container {
-  width: 83.333em;
+  width: 83.33333em;
   position: relative;
   display: block;
   margin: 0 auto; }
@@ -145,13 +147,26 @@ img, iframe {
 /* COMMON LAYOUT */
 body {
   border-top: 50% solid red;
-  border-right: 50% solid #f6f6f6; }
+  border-right: 50% solid #f6f6f6;
+  position: relative; }
   body.JS .content img {
     visibility: hidden; }
   body.JS .content iframe {
     visibility: hidden; }
   body.JS .home .project {
     visibility: hidden; }
+  body:after {
+    position: fixed;
+    left: 2.08333em;
+    top: 50%;
+    right: 2.08333em;
+    height: 1px;
+    background: #bebebe;
+    content: ' ';
+    z-index: -1;
+    opacity: .4;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg); }
 
 .content {
   float: left;
@@ -160,17 +175,17 @@ body {
   width: 65em;
   margin-right: 0em;
   font-size: 1em;
-  margin-left: 18.333em;
+  margin-left: 18.33333em;
   margin-top: 8.75em;
-  margin-bottom: 3.333em; }
+  margin-bottom: 3.33333em; }
   .content .full, .content .size-large, .content .size-full {
     float: left;
     display: block;
     position: relative;
-    width: 62.917em;
-    margin-right: 2.083em;
+    width: 62.91667em;
+    margin-right: 2.08333em;
     font-size: 1em;
-    margin-bottom: 2.083em;
+    margin-bottom: 2.08333em;
     font-size: 1em; }
     .content .full.vimeo, .content .size-large.vimeo, .content .size-full.vimeo {
       height: 35em; }
@@ -178,78 +193,100 @@ body {
     float: left;
     display: block;
     position: relative;
-    width: 30.417em;
-    margin-right: 2.083em;
+    width: 30.41667em;
+    margin-right: 2.08333em;
     font-size: 1em;
-    margin-bottom: 2.083em;
+    margin-bottom: 2.08333em;
     font-size: 1em; }
   .content .third, .content .size-thumbnail {
     float: left;
     display: block;
     position: relative;
-    width: 19.583em;
-    margin-right: 2.083em;
+    width: 19.58333em;
+    margin-right: 2.08333em;
     font-size: 1em;
-    margin-bottom: 2.083em;
+    margin-bottom: 2.08333em;
     font-size: 1em; }
+
+.centered {
+  text-align: center; }
 
 .clear {
   clear: both; }
 
 /* CUSTOM */
-.addthis_toolbox {
+.twitter-follow-button-container {
   position: absolute;
-  right: 2.083em;
-  width: 90px;
+  right: 2.08333em;
+  width: 123px;
   height: 20px;
   top: 3em;
+  overflow: hidden;
   visibility: hidden; }
-  .addthis_toolbox .addthis_button_email, .addthis_toolbox .addthis_button {
-    display: block;
-    float: right;
-    margin-left: 12px;
-    padding: 2px 0 0;
-    height: 16px;
-    width: 16px; }
-  .addthis_toolbox .addthis_button_facebook_send {
-    width: 55px;
-    padding: 0;
-    margin-right: 12px;
-    overflow: hidden; }
-  .addthis_toolbox .addthis_button_facebook_like {
-    float: right;
-    display: block;
-    margin-left: 12px;
-    width: 50px;
-    height: 20px;
-    overflow: hidden;
-    padding: 0; }
+  .twitter-follow-button-container a {
+    visibility: hidden; }
 
-/* ADD THIS */
+/* ADD THIS - HIDE for now
+.addthis_toolbox {
+ position: absolute;
+ right: $gutter;
+ width: 130px;
+ height: 20px;
+ top: 3em;
+ visibility: hidden;
+ .addthis_button_email, .addthis_button {
+ 	margin: 0;
+ 	display: block;
+ 	float: right;
+ 	margin-left: 12px;
+ 	padding: 2px 0 0;
+ 	height: 16px;
+ 	width: 16px;
+ }
+ .addthis_button_facebook_send {
+ 	margin: 0;
+ 	width: 55px;
+ 	padding: 0;
+ 	margin-right: 12px;
+ 	overflow: hidden;
+ }
+ .addthis_button_facebook_like {
+ 	margin: 0;
+ 	float: right;
+ 	display: block;
+ 	margin-left: 12px;
+ 	width: 80px;
+ 	height: 20px;
+ 	overflow: hidden;
+ 	padding: 0;
+ }
+}
 #at15s, #at16p {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0; }
-
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+border-radius: 0;
+}
 #at15pf {
-  display: none; }
-
+	display: none;
+}
 #at15ptc, #at15sptx {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1em; }
-  #at15ptc#at15sptx, #at15sptx#at15sptx {
-    font-size: .75em; }
-
-/* Some day, customize that CSS! */
+	@include helvetica-font;
+	font-size: 1em;
+	&#at15sptx {
+		font-size: .75em;
+	}
+}
+*/
 /* UNIVERSAL HEADER */
 .header {
   width: 12.5em;
   position: absolute;
   display: block;
-  margin-left: 2.083em;
+  margin-left: 2.08333em;
   text-align: center;
   top: auto;
-  left: auto; }
+  left: auto;
+  z-index: 1; }
   .header .logo {
     width: 100%;
     height: 9em;
@@ -289,7 +326,7 @@ body {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         margin: 0;
         font-size: .8em;
-        color: #646464;
+        color: #828282;
         display: block; }
       .header .logo h1:after, .header .logo h2:after {
         clear: both;
@@ -301,7 +338,7 @@ body {
     display: block;
     float: left;
     width: 100%;
-    margin: 2.083em 0;
+    margin: 2.08333em 0;
     color: #d2d2d2; }
     .header ul.nav li, .header ul.services li {
       margin: 0;
@@ -321,15 +358,15 @@ body {
 
 /* HOME */
 .home .content {
-  margin-bottom: 5.417em; }
+  margin-bottom: 5.41667em; }
 
 .home .half {
   display: block;
   height: auto;
-  margin-bottom: 3.333em; }
+  margin-bottom: 3.33333em; }
 
 .home .intro {
-  height: 19.583em; }
+  height: 19.58333em; }
   .home .intro h3 {
     margin: 0 1em .5em 0; }
     .home .intro h3:after {
@@ -385,80 +422,112 @@ body {
 .home .project:hover ul.processes, .home .project:hover h3 {
   background: rgba(0, 0, 0, 0.9); }
 
-/* SINGLE */
-.single .project .intro {
+/* SINGLE, PAGE */
+.single .intro, .page .intro {
   float: left;
   display: block;
   position: relative;
   width: 65em;
   margin-right: 0em;
   font-size: 1em; }
-  .single .project .intro .title {
+  .single .intro .title, .page .intro .title {
     float: left;
     display: block;
     position: relative;
-    width: 30.417em;
-    margin-right: 2.083em;
+    width: 30.41667em;
+    margin-right: 2.08333em;
     font-size: 1em;
     margin-bottom: 0; }
-    .single .project .intro .title h1 {
+    .single .intro .title h1, .page .intro .title h1 {
       font-family: 'Adobe Garamond Pro', 'Adobe Garamond', 'Garamond', 'Georgia', serif;
       font-style: italic;
       font-size: 3em;
       line-height: 1.1em;
       margin-top: 0;
       margin-bottom: 1em; }
-  .single .project .intro ul.processes {
+  .single .intro ul.processes, .page .intro ul.processes {
     float: left;
     display: block;
     position: relative;
-    width: 21.667em;
+    width: 21.66667em;
     margin-right: 0em;
     font-size: 1em;
-    margin-left: 10.833em;
+    margin-left: 10.83333em;
     list-style: none;
     padding: 0; }
-    .single .project .intro ul.processes li {
+    .single .intro ul.processes li, .page .intro ul.processes li {
       float: left;
       display: block;
       position: relative;
       width: 8.75em;
-      margin-right: 2.083em;
+      margin-right: 2.08333em;
       font-size: 1em;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 1em; }
-.single .project p {
+.single .content p, .page .content p {
   font-family: 'Adobe Garamond Pro', 'Adobe Garamond', 'Garamond', 'Georgia', serif;
-  line-height: 1.6em;
-  font-size: 1.3em;
-  margin: 1em 0 3.333em;
-  padding-right: 3.333em;
+  line-height: 1.4em;
+  font-size: 1.5em;
+  margin: 1em 0 3.33333em;
+  padding-right: 3.33333em;
   display: block;
   float: left;
   width: auto; }
-.single .project img {
-  margin-bottom: 2.083em; }
-.single .project .wp-caption {
+.single .content img, .page .content img {
+  margin-bottom: 2.08333em; }
+.single .content .wp-caption, .page .content .wp-caption {
   margin-bottom: 3em;
   display: block;
   float: left;
   width: auto !important;
   position: relative; }
-  .single .project .wp-caption img, .single .project .wp-caption iframe {
+  .single .content .wp-caption img, .single .content .wp-caption iframe, .page .content .wp-caption img, .page .content .wp-caption iframe {
     margin-bottom: .75em; }
-  .single .project .wp-caption p {
+  .single .content .wp-caption p, .page .content .wp-caption p {
     position: absolute;
     left: 0;
     bottom: -1.25em;
     width: 90%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #646464;
+    color: #828282;
     margin: 0;
     line-height: 1.6em;
     text-transform: none;
     letter-spacing: .05em;
-    font-size: 1em;
+    font-size: 1.1em;
     padding: 0; }
+
+/* SERVICES */
+.services {
+  float: left;
+  display: block;
+  position: relative;
+  width: 65em;
+  margin-right: 0em;
+  font-size: 1em;
+  margin-left: 18.33333em;
+  margin-bottom: 8.75em;
+  padding-top: .5em; }
+  .services ul li {
+    float: left;
+    display: block;
+    position: relative;
+    width: 14.16667em;
+    margin-right: 2.08333em;
+    font-size: 1em;
+    font-size: 1em;
+    border-bottom: 0.2em solid #f0f0f0;
+    margin-bottom: 1em; }
+    .services ul li h3 {
+      font-family: 'Adobe Garamond Pro', 'Adobe Garamond', 'Garamond', 'Georgia', serif;
+      font-size: 1.4em;
+      font-style: italic;
+      margin-bottom: 0; }
+    .services ul li p {
+      display: none;
+      margin: 0;
+      font-size: .9em;
+      color: #828282; }
 
 /* PRINCIPAL */
 .principal {
@@ -468,30 +537,30 @@ body {
   width: 65em;
   margin-right: 0em;
   font-size: 1em;
-  margin-left: 18.333em;
-  margin-bottom: 3.333em; }
+  margin-left: 18.33333em;
+  margin-bottom: 3.33333em; }
   .principal .bio {
     float: left;
     display: block;
     position: relative;
-    width: 30.417em;
-    margin-right: 2.083em;
+    width: 30.41667em;
+    margin-right: 2.08333em;
     font-size: 1em; }
     .principal .bio p .pic {
       float: left;
       display: block;
       position: relative;
       width: 8.75em;
-      margin-right: 2.083em;
+      margin-right: 2.08333em;
       font-size: 1em;
       margin-bottom: .5em;
       margin-top: .5em;
-      outline: 1px solid #c8c8c8;
+      outline: 1px solid #bebebe;
       line-height: 1em;
       padding: 0;
       height: 105px;
       overflow: hidden;
-      font-size: 1em; }
+      font-size: 1.1em; }
       .principal .bio p .pic img {
         width: 100%;
         height: auto; }
@@ -507,8 +576,8 @@ body {
       letter-spacing: .1em;
       line-height: 1em;
       border-bottom: 0.2em solid #f0f0f0;
-      margin-bottom: 1.042em;
-      color: #646464; }
+      margin-bottom: 1.04167em;
+      color: #828282; }
     .principal .bio-meta ul {
       list-style: none;
       padding: 0; }
@@ -518,24 +587,24 @@ body {
       float: left;
       display: block;
       position: relative;
-      width: 21.667em;
+      width: 21.66667em;
       margin-right: 0em;
       font-size: 1em;
       margin-top: -1em; }
       .principal .bio-meta .pinterest h3 {
-        margin-right: 2.083em; }
+        margin-right: 2.08333em; }
       .principal .bio-meta .pinterest li {
         float: left;
         display: block;
         position: relative;
         width: 8.75em;
-        margin-right: 2.083em;
+        margin-right: 2.08333em;
         font-size: 1em;
-        height: 5.828em;
-        margin-bottom: 1.042em;
+        height: 5.8275em;
+        margin-bottom: 1.04167em;
         overflow: hidden;
-        outline: 1px solid #c8c8c8;
-        background: #c8c8c8; }
+        outline: 1px solid #bebebe;
+        background: #bebebe; }
         .principal .bio-meta .pinterest li p {
           margin: 0;
           font-size: 0;
@@ -551,7 +620,7 @@ body {
       display: block;
       position: relative;
       width: 8.75em;
-      margin-right: 2.083em;
+      margin-right: 2.08333em;
       font-size: 1em;
       margin-top: -1em; }
       .principal .bio-meta .twitter .timestamp {
@@ -562,9 +631,65 @@ body {
       float: left;
       display: block;
       position: relative;
-      width: 14.167em;
-      margin-right: 2.083em;
-      font-size: 1em; }
+      width: 8.75em;
+      margin-right: 2.08333em;
+      font-size: 1em;
+      margin-top: -1em; }
+
+/* ABOUT */
+body.page:after {
+  opacity: .3; }
+body.page .content {
+  float: left;
+  display: block;
+  position: relative;
+  width: 79.16667em;
+  margin-right: 2.08333em;
+  font-size: 1em;
+  margin-left: 2.08333em;
+  margin-top: 6em; }
+  body.page .content img.portrait {
+    margin: 3em 0;
+    width: 320px;
+    height: 320px;
+    display: block;
+    margin: 0 auto; }
+  body.page .content h1 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    margin: 1em auto 0;
+    font-size: 2.4em; }
+  body.page .content h2 {
+    font-size: 1.6em;
+    line-height: 1.1em;
+    color: #00a88f; }
+  body.page .content h3 {
+    float: left;
+    display: block;
+    position: relative;
+    width: 16.25em;
+    margin-right: 0em;
+    font-size: 1em;
+    color: #bebebe; }
+  body.page .content section {
+    float: left;
+    display: block;
+    position: relative;
+    width: 48.75em;
+    margin-right: 0em;
+    font-size: 1em; }
+  body.page .content p {
+    margin-top: 0; }
+  body.page .content li {
+    float: left;
+    display: block;
+    position: relative;
+    width: 8.75em;
+    margin-right: 2.08333em;
+    font-size: 1em;
+    font-size: 1.6em;
+    color: #00a88f;
+    line-height: 1.4em; }
 
 /* FOOTER */
 .footer {
@@ -574,33 +699,37 @@ body {
   width: 65em;
   margin-right: 0em;
   font-size: 1em;
-  margin-left: 18.333em;
-  margin-bottom: 3.333em;
-  color: #c8c8c8; }
+  margin-left: 18.33333em;
+  margin-bottom: 3.33333em;
+  color: #bebebe; }
   .footer p {
     font-size: .9em; }
+  .footer .grid_hover {
+    z-index: 99999;
+    position: relative; }
   .footer a {
-    color: #c8c8c8;
+    color: #bebebe;
     text-decoration: underline; }
     .footer a:hover {
-      color: #646464; }
+      color: #828282; }
 
 .show_grid {
-  display: block;
+  display: none;
   width: 81.25em;
-  padding-left: 2.083em;
+  padding-left: 2.08333em;
   position: fixed;
   top: 0;
   margin: auto 0;
   overflow: visible;
   background: rgba(0, 200, 254, 0.1);
-  height: 100%; }
+  height: 100%;
+  z-index: -1; }
   .show_grid .column {
     float: left;
     display: block;
     position: relative;
-    width: 3.333em;
-    margin-right: 2.083em;
+    width: 3.33333em;
+    margin-right: 2.08333em;
     font-size: 1em;
     height: 100%;
     background: rgba(0, 200, 254, 0.1);
@@ -613,8 +742,11 @@ body {
   .header {
     position: fixed; } }
 @media screen and (max-width: 480px) {
+  .twitter-follow-button {
+    display: none; }
+
   .container {
-    width: 34.583em;
+    width: 34.58333em;
     -webkit-text-size-adjust: none;
     text-size-adjust: none; }
 
@@ -625,13 +757,14 @@ body {
     width: 32.5em;
     margin-right: 0em;
     font-size: 1em;
+    margin-left: 2.08333em;
     position: relative; }
     .header .logo {
       float: left;
       display: block;
       position: relative;
-      width: 30.417em;
-      margin-right: 2.083em;
+      width: 30.41667em;
+      margin-right: 2.08333em;
       font-size: 1em;
       height: 12em; }
       .header .logo h1:before, .header .logo h2:before {
@@ -640,59 +773,84 @@ body {
       float: left;
       display: block;
       position: relative;
-      width: 14.167em;
-      margin-right: 2.083em;
+      width: 14.16667em;
+      margin-right: 2.08333em;
       font-size: 1em; }
       .header ul.nav li a {
         font-size: .8em; }
 
-  .content {
+  .content, body.page .content {
+    float: left;
+    display: block;
+    position: relative;
+    width: 30.41667em;
+    margin-right: 2.08333em;
+    font-size: 1em;
+    margin-left: 2.08333em;
+    margin-top: 3.33333em;
+    margin-bottom: 3.33333em; }
+    .content img, body.page .content img {
+      height: auto !important; }
+    .content .full, .content .size-large, .content .size-full, body.page .content .full, body.page .content .size-large, body.page .content .size-full {
+      float: left;
+      display: block;
+      position: relative;
+      width: 30.41667em;
+      margin-right: 2.08333em;
+      font-size: 1em;
+      margin-bottom: 2.08333em;
+      font-size: 1em; }
+      .content .full.vimeo, .content .size-large.vimeo, .content .size-full.vimeo, body.page .content .full.vimeo, body.page .content .size-large.vimeo, body.page .content .size-full.vimeo {
+        height: 17em; }
+    .content .half, .content .size-medium, body.page .content .half, body.page .content .size-medium {
+      float: left;
+      display: block;
+      position: relative;
+      width: 14.16667em;
+      margin-right: 2.08333em;
+      font-size: 1em;
+      margin-bottom: 2.08333em;
+      font-size: 1em; }
+    .content .third, .content .size-thumbnail, body.page .content .third, body.page .content .size-thumbnail {
+      float: left;
+      display: block;
+      position: relative;
+      width: 8.75em;
+      margin-right: 2.08333em;
+      font-size: 1em;
+      margin-bottom: 2.08333em;
+      font-size: 1em; }
+    .content img.portrait, body.page .content img.portrait {
+      margin: 3em 0;
+      width: 240px;
+      height: 240px;
+      display: block;
+      margin: 0 auto; }
+    .content section, body.page .content section {
+      float: left;
+      display: block;
+      position: relative;
+      width: 30.41667em;
+      margin-right: 2.08333em;
+      font-size: 1em; }
+      .content section p, body.page .content section p {
+        padding-right: 1em; }
+
+  .home .half, .home .size-medium {
+    float: left;
+    display: block;
+    position: relative;
+    width: 30.41667em;
+    margin-right: 2.08333em;
+    font-size: 1em; }
+  .home .services {
     float: left;
     display: block;
     position: relative;
     width: 32.5em;
     margin-right: 0em;
     font-size: 1em;
-    margin-left: 2.083em;
-    margin-top: 3.333em;
-    margin-bottom: 3.333em; }
-    .content .full, .content .size-large, .content .size-full {
-      float: left;
-      display: block;
-      position: relative;
-      width: 30.417em;
-      margin-right: 2.083em;
-      font-size: 1em;
-      margin-bottom: 2.083em;
-      font-size: 1em; }
-      .content .full.vimeo, .content .size-large.vimeo, .content .size-full.vimeo {
-        height: 17em; }
-    .content .half, .content .size-medium {
-      float: left;
-      display: block;
-      position: relative;
-      width: 14.167em;
-      margin-right: 2.083em;
-      font-size: 1em;
-      margin-bottom: 2.083em;
-      font-size: 1em; }
-    .content .third, .content .size-thumbnail {
-      float: left;
-      display: block;
-      position: relative;
-      width: 8.75em;
-      margin-right: 2.083em;
-      font-size: 1em;
-      margin-bottom: 2.083em;
-      font-size: 1em; }
-
-  .home .content .half, .home .content .size-medium {
-    float: left;
-    display: block;
-    position: relative;
-    width: 30.417em;
-    margin-right: 2.083em;
-    font-size: 1em; }
+    margin-left: 2.08333em; }
 
   .principal, .footer {
     float: left;
@@ -701,9 +859,9 @@ body {
     width: 32.5em;
     margin-right: 0em;
     font-size: 1em;
-    margin-left: 2.083em; }
+    margin-left: 2.08333em; }
     .principal .bio, .footer .bio {
-      margin-bottom: 2.083em; }
+      margin-bottom: 2.08333em; }
 
   .single .project .intro {
     float: left;
@@ -721,13 +879,13 @@ body {
       margin-top: 0;
       margin-bottom: 3em; }
   .single .project .wp-caption {
-    margin-bottom: 2.083em;
+    margin-bottom: 2.08333em;
     display: block;
     float: left;
     width: auto !important;
     position: relative; }
     .single .project .wp-caption img, .single .project .wp-caption iframe {
       margin-bottom: 0;
-      max-width: 30.417em; }
+      max-width: 30.41667em; }
     .single .project .wp-caption p {
       display: none; } }

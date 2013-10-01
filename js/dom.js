@@ -6,14 +6,27 @@ jQuery(document).ready(function($) {
   
   // js running so we'll do masonry
 	$('body.JS .content').imagesLoaded( function(){
+	
 		if ($('.home').length) {
 		  $('.home .content').masonry({
 		    itemSelector : '.half'
 		  }).masonry('reload');
 	  }
-	  $('.addthis_toolbox').css({opacity: 0.0, visibility: "visible"}).animate({ opacity: 1.0 }, 400);
-		$('.content img').css({opacity: 0.0, visibility: "visible"}).animate({ opacity: 1.0 }, 200);
-	  $('.content iframe').css({opacity: 0.0, visibility: "visible"}).animate({ opacity: 1.0 }, 200);
+	  
+	  $('.twitter-follow-button-container').css({opacity: 0.0, visibility: "visible"}).animate({ opacity: 1.0 }, 200);
+
+    var delay = 0;
+    // queue all
+    $('.content img').each(function() {
+      $(this).css({opacity: 0.0, visibility: "visible"}).delay(delay).animate({ opacity: 1.0 }, 100);
+      delay += 300;
+    });
+    $('.content iframe').each(function() {
+      $(this).css({opacity: 0.0, visibility: "visible"}).delay(delay).animate({ opacity: 1.0 }, 100);
+      delay += 300;
+    });
+
+
 	});
 
 	// GRID
@@ -24,22 +37,26 @@ jQuery(document).ready(function($) {
 			$('.container').append('<div class="show_grid" />');
 			for (i=0;i<COLUMNS;i++) {
 				$('.show_grid').append('<div class="column">'+(i+1)+'</div>');
-				}
+		  }
+		  $('.show_grid').fadeIn(50);
 		}
 		function hideGrid() {
-			if ($('.show_grid').length) {
-				$('.show_grid').remove();
-			}
+
+        $('.show_grid').fadeOut(100, function() {
+          // Animation complete.
+          $('.show_grid').remove();
+        });
+
 		}
-		$(document).keydown(function(e) {		
-			if (e.shiftKey) {
-				showGrid();
-			}
-		});
-		$(document).keyup(function(event){
-			hideGrid();
-		});
-	}
+    $(".grid_hover a").hover(
+      function () {
+        showGrid();
+      }, 
+      function () {
+        hideGrid();
+      }
+    );
+  };
 	
 	// ARROW NAV
 	
