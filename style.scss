@@ -195,7 +195,7 @@ li {
 	margin-left: 0;
 }
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset {
-	1em 0;
+	margin: 1em 0;
 }
 img, iframe {
 	max-width: 100%;
@@ -536,14 +536,13 @@ visibility: hidden;
 			@include serif-font;
 			line-height: 1.4em;
 			font-size: 1.5em;
-			margin: 1em 0 1.5em;
 			padding-right: $col1;
 			display: block;
 			float: left;
 			width: auto;
 		}
 		img {
-			margin-bottom: $gutter;
+			margin: $gutter 0;
 		}
 		.wp-caption {
 			margin-bottom: 3em;
