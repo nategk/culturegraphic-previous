@@ -93,7 +93,8 @@ li {
   margin-left: 0; }
 
 p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
-  margin: 1em 0; }
+  margin-bottom: 2em;
+  margin-top: 0; }
 
 img, iframe {
   max-width: 100%;
@@ -416,12 +417,13 @@ body {
   font-family: 'Adobe Garamond Pro', 'Adobe Garamond', 'Garamond', 'Georgia', serif;
   line-height: 1.4em;
   font-size: 1.5em;
+  margin: 1em 0;
   padding-right: 3.33333em;
   display: block;
   float: left;
   width: auto; }
 .single .content img, .page .content img {
-  margin: 2.08333em 0; }
+  margin-bottom: 1em 0; }
 .single .content .wp-caption, .page .content .wp-caption {
   margin-bottom: 3em;
   display: block;
