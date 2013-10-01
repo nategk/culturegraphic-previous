@@ -337,58 +337,6 @@ visibility: hidden;
 	}
 }
 
-/* ADD THIS - HIDE for now
-.addthis_toolbox {
- position: absolute;
- right: $gutter;
- width: 130px;
- height: 20px;
- top: 3em;
- visibility: hidden;
- .addthis_button_email, .addthis_button {
- 	margin: 0;
- 	display: block;
- 	float: right;
- 	margin-left: 12px;
- 	padding: 2px 0 0;
- 	height: 16px;
- 	width: 16px;
- }
- .addthis_button_facebook_send {
- 	margin: 0;
- 	width: 55px;
- 	padding: 0;
- 	margin-right: 12px;
- 	overflow: hidden;
- }
- .addthis_button_facebook_like {
- 	margin: 0;
- 	float: right;
- 	display: block;
- 	margin-left: 12px;
- 	width: 80px;
- 	height: 20px;
- 	overflow: hidden;
- 	padding: 0;
- }
-}
-#at15s, #at16p {
--moz-border-radius: 0;
--webkit-border-radius: 0;
-border-radius: 0;
-}
-#at15pf {
-	display: none;
-}
-#at15ptc, #at15sptx {
-	@include helvetica-font;
-	font-size: 1em;
-	&#at15sptx {
-		font-size: .75em;
-	}
-}
-*/
-
 
 /* UNIVERSAL HEADER */
 
