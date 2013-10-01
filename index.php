@@ -17,7 +17,7 @@ get_header(); ?>
 <div class="content" role="main">
 	<div class="intro half">
 		<h2 class="label above">Welcome</h2>
-		<h3 class="big-title">Human-centered, data informed design by Nathaniel Kerksick</h3>
+		<h3 class="big-title">Human-centered, data informed, purposeful product design</h3>
 	</div>
 	<?php /* If there are no posts to display, such as an empty archive page */ ?>
 	<?php if ( ! have_posts() ) : ?>
@@ -128,6 +128,7 @@ get_header(); ?>
 				<li><a href="http://twitter.com/natesayer/">Twitter</a></li>
 				<li><a href="http://instagram.com/natesayer/">Instagram</a></li>
 				<li><a href="https://github.com/culturegraphic">GitHub</a></li>
+				<li><a href="http://dribbble.com/natesayer">Dribbble</a></li>
 				<li><a href="http://www.rdio.com/#/people/natesayer/">Rdio</a></li>
 				<li><a href="http://www.quora.com/Nathaniel-Kerksick">Quora</a></li>
 				<li><a href="http://www.linkedin.com/in/nathanielkerksick">LinkedIn</a></li>
