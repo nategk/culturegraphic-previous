@@ -161,10 +161,9 @@ body {
     top: 50%;
     right: 2.08333em;
     height: 1px;
-    background: #bebebe;
+    background: #f0f0f0;
     content: ' ';
     z-index: -1;
-    opacity: .4;
     -webkit-transform: rotate(-30deg);
     transform: rotate(-30deg); }
 
@@ -586,8 +585,6 @@ body {
       margin-top: -1em; }
 
 /* ABOUT */
-body.page:after {
-  opacity: .3; }
 body.page .content {
   float: left;
   display: block;

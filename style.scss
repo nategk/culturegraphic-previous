@@ -279,10 +279,9 @@ body {
 		top: 50%;
 		right: $gutter;
 		height: 1px;
-		background: $light_gray;
+		background: $ultralight_gray;
 		content: ' ';
 		z-index: -1;
-		opacity: .4;
 		-webkit-transform: rotate(-30deg);
 		transform: rotate(-30deg);
 	}
@@ -691,9 +690,6 @@ visibility: hidden;
 /* ABOUT */
 
 body.page {
-	&:after {
-		opacity: .3;
-	}
 	.content {
 		@include width(15);
 		margin-left: $gutter;
