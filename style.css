@@ -155,18 +155,6 @@ body {
     visibility: hidden; }
   body.JS .home .project {
     visibility: hidden; }
-  body:after {
-    position: fixed;
-    left: 2.08333em;
-    top: 50%;
-    right: 2.08333em;
-    height: 1px;
-    background: #bebebe;
-    content: ' ';
-    z-index: -1;
-    opacity: .4;
-    -webkit-transform: rotate(-30deg);
-    transform: rotate(-30deg); }
 
 .content {
   float: left;
