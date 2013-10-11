@@ -279,9 +279,10 @@ body {
 		top: 50%;
 		right: $gutter;
 		height: 1px;
-		background: $ultralight_gray;
+		background: $light_gray;
 		content: ' ';
 		z-index: -1;
+		opacity: .4;
 		-webkit-transform: rotate(-30deg);
 		transform: rotate(-30deg);
 	}
@@ -335,6 +336,58 @@ visibility: hidden;
 		visibility: hidden;
 	}
 }
+
+/* ADD THIS - HIDE for now
+.addthis_toolbox {
+ position: absolute;
+ right: $gutter;
+ width: 130px;
+ height: 20px;
+ top: 3em;
+ visibility: hidden;
+ .addthis_button_email, .addthis_button {
+ 	margin: 0;
+ 	display: block;
+ 	float: right;
+ 	margin-left: 12px;
+ 	padding: 2px 0 0;
+ 	height: 16px;
+ 	width: 16px;
+ }
+ .addthis_button_facebook_send {
+ 	margin: 0;
+ 	width: 55px;
+ 	padding: 0;
+ 	margin-right: 12px;
+ 	overflow: hidden;
+ }
+ .addthis_button_facebook_like {
+ 	margin: 0;
+ 	float: right;
+ 	display: block;
+ 	margin-left: 12px;
+ 	width: 80px;
+ 	height: 20px;
+ 	overflow: hidden;
+ 	padding: 0;
+ }
+}
+#at15s, #at16p {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+border-radius: 0;
+}
+#at15pf {
+	display: none;
+}
+#at15ptc, #at15sptx {
+	@include helvetica-font;
+	font-size: 1em;
+	&#at15sptx {
+		font-size: .75em;
+	}
+}
+*/
 
 
 /* UNIVERSAL HEADER */
@@ -536,14 +589,14 @@ visibility: hidden;
 			@include serif-font;
 			line-height: 1.4em;
 			font-size: 1.5em;
-			margin: 1em 0;
+			margin: 1em 0 $column;
 			padding-right: $col1;
 			display: block;
 			float: left;
 			width: auto;
 		}
 		img {
-			margin-bottom: 1em 0;
+			margin-bottom: $gutter;
 		}
 		.wp-caption {
 			margin-bottom: 3em;
@@ -564,7 +617,7 @@ visibility: hidden;
 				margin: 0;
 				line-height: 1.6em;
 				text-transform: none;
-				letter-spacing: normal;
+				letter-spacing: .05em;
 				font-size: 1.1em;
 				padding: 0;
 			}
