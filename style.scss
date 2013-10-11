@@ -273,19 +273,20 @@ body {
 	&.JS .home .project {
 		visibility: hidden;
 	}
-	&:after {
-		position: fixed;
-		left: $gutter;
-		top: 50%;
-		right: $gutter;
-		height: 1px;
-		background: $light_gray;
-		content: ' ';
-		z-index: -1;
-		opacity: .4;
-		-webkit-transform: rotate(-30deg);
-		transform: rotate(-30deg);
-	}
+	// Background line
+	// &:after {
+	// 	position: fixed;
+	// 	left: $gutter;
+	// 	top: 50%;
+	// 	right: $gutter;
+	// 	height: 1px;
+	// 	background: $light_gray;
+	// 	content: ' ';
+	// 	z-index: -1;
+	// 	opacity: .4;
+	// 	-webkit-transform: rotate(-30deg);
+	// 	transform: rotate(-30deg);
+	// }
 }
 
 .content {
