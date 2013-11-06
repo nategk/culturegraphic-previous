@@ -142,7 +142,7 @@ border-radius: 0;
 .single .content img, .page .content img { margin-bottom: 2.08333em; }
 .single .content .wp-caption, .page .content .wp-caption { margin-bottom: 3em; display: block; float: left; width: auto !important; position: relative; }
 .single .content .wp-caption img, .single .content .wp-caption iframe, .page .content .wp-caption img, .page .content .wp-caption iframe { margin-bottom: .75em; }
-.single .content .wp-caption p, .page .content .wp-caption p { position: absolute; left: 0; bottom: -1.25em; width: 90%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #828282; margin: 0; line-height: 1.6em; text-transform: none; letter-spacing: 1em; font-size: 1.1em; padding: 0; }
+.single .content .wp-caption p, .page .content .wp-caption p { position: absolute; left: 0; bottom: -1.25em; width: 90%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #828282; margin: 0; line-height: 1.6em; text-transform: none; letter-spacing: normal; font-size: 1.1em; padding: 0; }
 
 /* SERVICES */
 .services { float: left; display: block; position: relative; width: 65em; margin-right: 0em; font-size: 1em; margin-left: 18.33333em; margin-bottom: 8.75em; padding-top: .5em; }
