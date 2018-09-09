@@ -1,0 +1,22 @@
+{
+  "name": "culturegraphic.com",
+  "version": "1.0.0",
+  "description": "Nate Kerksick design studio and portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/culturegraphic/culturegraphic.com.git"
+  },
+  "author": "Nate Kerkisck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/culturegraphic/culturegraphic.com/issues"
+  },
+  "homepage": "https://github.com/culturegraphic/culturegraphic.com#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
