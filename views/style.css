@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
+html {
+  font-family: 'Noto Serif JP', sans-serif;
+}
+body {
+  padding: 1em;
+}
+table {
+  border-collapse: collapse;
+}
+table tr {
+  border-top: 1px solid grey;
+}
+table td {
+  padding: .5em 2em .5em 0;
+}
