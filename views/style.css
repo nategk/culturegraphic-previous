@@ -11,7 +11,7 @@ table {
   font-size: .95em;
 }
 table tr {
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid blue;
 }
 table td {
   padding: .75em 1.5em .75em 0;
