@@ -11,8 +11,11 @@ table {
   font-size: .95em;
 }
 table tr {
-  border-top: 1px solid grey;
+  border-top: 1px solid #d3d3d3;
 }
 table td {
-  padding: .5em 1.5em .25em 0;
+  padding: .75em 1.5em .75em 0;
+}
+table tr td:first-child {
+  font-weight: bold;
 }
