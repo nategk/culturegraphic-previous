@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  header
+    section
+      div.content
+        h1 Nate Kerksick
+        h2 Designer
+  section
+    div.content
+      p Hi, I&rsquo;m Nate. I lead teams that design products and brands for real-world impact. I created Obama&rsquo;s 2008 online ads in Chicago, ran a product &amp; brand studio in Brooklyn, and art directed ads at Ogilvy Paris. I was the founding designer at Change.org where I built a talented team and helped grow a global platform that would see a campaign victory every hour. I was raised in Milwaukee and indoctrinated into civic engagement by parents who met working for Cesar Chavez. I&rsquo;ve lived in eight cities across four countries and today I live in San Francisco, leading the Social Impact design team at Facebook. I have a degree in Interactive Art Direction from Hyper Island in Sweden and teach Civic Design at California College for the Arts.
+      //- hr
+      h3 Experience
+      table.work
+        each row, index in workExperience
+          include includes/work-position

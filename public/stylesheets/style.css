@@ -1,0 +1,148 @@
+@font-face {
+  font-family: 'swedensans';
+  src: url("../fonts/swedensans-webfont.woff2") format("woff2"), url("../fonts/swedensans-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'swedensans';
+  src: url("../fonts/swedensansbold-webfont.woff2") format("woff2"), url("../fonts/swedensansbold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font: 18px Helvetica, Arial, sans-serif;
+  color: #4B4F56; }
+
+p, li {
+  margin: 1em 0;
+  line-height: 1.4em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'swedensans', Helvetica, Arial, sans-serif;
+  line-height: 1em;
+  margin: 2em 0 1em; }
+
+h2, h3, h4 {
+  font-weight: normal; }
+
+h1 {
+  font-size: 2.4em; }
+
+@media screen and (min-width: 721px) {
+  h1 {
+    font-size: 4.2em;
+    margin-left: -.025em; } }
+
+h2 {
+  font-size: 1.8em; }
+
+h3 {
+  font-size: 1.4em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5, h6 {
+  font-size: 1em; }
+
+p {
+  line-height: 1.4em; }
+
+a {
+  color: #4B4F56;
+  font-weight: bold; }
+
+hr {
+  margin: 1em 0;
+  border: 0;
+  border-top: 1px #c3cbd4 solid; }
+
+ul {
+  padding-left: 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%; }
+  table tr td {
+    vertical-align: top;
+    padding-right: .5em;
+    padding-bottom: 1em; }
+
+section {
+  min-width: 320px;
+  max-width: 720px;
+  margin: 0 auto; }
+
+.content {
+  margin: 1em; }
+
+header {
+  background-color: #eff3f8;
+  background-image: url("../images/nate-kerksick.jpg");
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 35%;
+  position: relative;
+  max-height: 420px; }
+  header:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -10px;
+    width: 1px;
+    height: 50%;
+    bottom: 0;
+    background: linear-gradient(to bottom, #333 0%, transparent 100%); }
+  header .content {
+    position: absolute;
+    bottom: 0; }
+    header .content h1, header .content h2 {
+      color: white;
+      display: inline-block;
+      margin: .3em .3em 0 0; }
+
+table.work tr td ul {
+  list-style: none;
+  margin: 0; }
+  table.work tr td ul li {
+    margin: 0; }
+  table.work tr td ul li.organization {
+    font-weight: bold; }
+  table.work tr td ul li.location {
+    color: #8a8f96; }
+  table.work tr td ul li.description {
+    font-size: .95em;
+    margin: 1em 0; }
+
+table.work tr td.year {
+  padding: 0;
+  position: relative;
+  text-align: center; }
+  table.work tr td.year:before {
+    border-right: 1px solid #c3cbd4;
+    content: '';
+    margin: 0 auto;
+    position: absolute;
+    top: 2em;
+    right: 50%;
+    bottom: 1em; }
+    table.work tr td.year:before:last-child {
+      content: none; }
+
+table.work tr:last-child td {
+  padding-bottom: 4em; }
+
+table.work tr:last-child td.year:before {
+  content: none;
+  border: 0; }
+
+/*# sourceMappingURL=style.css.map */

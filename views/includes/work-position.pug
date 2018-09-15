@@ -1,0 +1,13 @@
+block work-position
+  tr
+    td
+      ul
+        li.organization= row['organization']
+        li.role= row['role']
+        li.location= row['location']
+        li.description= row['description']
+    td.year= row['year']
+
+  //- ul
+  //-   each cell in row
+  //-     li= cell
